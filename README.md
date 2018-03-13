@@ -7,7 +7,7 @@
 [https://github.com/Hebin320/BaseKotlins](https://github.com/Hebin320/BaseKotlins)
 
 
-##第三方库
+<H3>第三方库</H3>
 
 - **[multi-image-selector][1]（图片选择库）**
 - **[rollviewpager][2]（自动轮播的Viewpager）**
@@ -20,7 +20,7 @@
 部分库是本地导入的，并没有用gradle的方式，主要是为了可以修改库里面的样式，
 比如说，选择图片的界面，Recyclerview没有更多的统一布局等等。
 
-##实用类、方法
+<H3>实用类、方法</H3>
 除了第三方库，项目里面还写了很多比较实用的方法或者类，比如
 - **[UniversalDialog][7]**
 通过简单的几行代码，就可以创建一个Dialog，而且自由度高，可以设置位置、动画、边距等等
