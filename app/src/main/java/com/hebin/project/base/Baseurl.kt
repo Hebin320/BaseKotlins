@@ -20,11 +20,11 @@ class Baseurl {
     companion object {
         private fun getDoMain(context: Context): String {
             val doMain = when (BaseFile.loadString(context, BaseFile.DOMAIN)) {
-                "" -> "http://safetypla.zerom.top"
+                "" -> "http://www.baidu.com"
             // 正式服务器
-                "domain" -> "http://safetypla.zerom.top"
+                "domain" -> "http://www.baidu.com"
             // 测试服务器
-                "test" -> "http://safetypla.zerom.top"
+                "test" -> "http://www.baidu.com"
             // 自定义服务器
                 else -> BaseFile.loadString(context, BaseFile.DOMAIN)
             }
@@ -33,11 +33,11 @@ class Baseurl {
 
         private fun getWebDomain(context: Context): String {
             val doMain = when (BaseFile.loadString(context, BaseFile.WEBDOMAIN)) {
-                "" -> "http://m.victoroa.com"
+                "" -> "http://www.baidu.com"
             // 正式服务器
-                "{getDoMain(context)}" -> "http://m.victoroa.com"
+                "{getDoMain(context)}" -> "www.baidu.com"
             // 测试服务器
-                "test" -> "http://m.victoroa.cc"
+                "test" -> "http://www.baidu.com"
             // 自定义服务器
                 else -> BaseFile.loadString(context, BaseFile.WEBDOMAIN)
             }
