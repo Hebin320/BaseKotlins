@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll.DomainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.universal.DomainActivity">
+
+    <include layout="@layout/public_simple_title" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etDomain"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_5dp_white"
+            android:hint="请输入自定义域名"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:singleLine="true"
+            android:textColor="@color/normal"
+            android:textColorHint="#d2d1d1"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tvSure"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="正式域名"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="http://safetypla.zerom.top"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_16" />
+
+        <Switch
+            android:id="@+id/switchDomain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:switchMinWidth="20dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="测试域名"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="http://safetypla.zerom.top"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_16" />
+
+        <Switch
+            android:id="@+id/switchTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:switchMinWidth="20dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etWebDomain"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_5dp_white"
+            android:hint="请输入HTML5界面自定义域名"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:singleLine="true"
+            android:textColor="@color/normal"
+            android:textColorHint="#d2d1d1"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tvWebSure"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="Web正式域名"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="http://m.victoroa.com"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_16" />
+
+        <Switch
+            android:id="@+id/switchWebDomain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:switchMinWidth="20dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="Web测试域名"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="http://m.victoroa.cc"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_16" />
+
+        <Switch
+            android:id="@+id/switchWebTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:switchMinWidth="20dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
