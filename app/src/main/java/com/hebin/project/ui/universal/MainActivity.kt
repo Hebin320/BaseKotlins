@@ -4,12 +4,14 @@ package com.hebin.project.ui.universal
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
 import com.hebin.project.widget.TestDialog
+import com.jude.rollviewpager.hintview.ColorPointHintView
 import kotlinx.android.synthetic.main.activity_main.*
 import me.nereo.multi_image_selector.MultiImageSelector
 import me.nereo.multi_image_selector.MultiImageSelectorActivity
@@ -34,6 +36,7 @@ class MainActivity : BaseActivity() {
             TestDialog(context).show()
         }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

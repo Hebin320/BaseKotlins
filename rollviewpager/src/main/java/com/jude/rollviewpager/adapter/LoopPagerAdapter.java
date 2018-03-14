@@ -12,13 +12,14 @@ import com.jude.rollviewpager.RollPagerView;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-/**
- * Created by Mr.Jude on 2016/1/9.
- */
 public abstract class LoopPagerAdapter extends PagerAdapter{
     private RollPagerView mViewPager;
 
     private ArrayList<View> mViewList = new ArrayList<>();
+
+    public LoopPagerAdapter() {
+
+    }
 
     private class LoopHintViewDelegate implements RollPagerView.HintViewDelegate{
         @Override
