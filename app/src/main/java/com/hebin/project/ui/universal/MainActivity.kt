@@ -4,14 +4,10 @@ package com.hebin.project.ui.universal
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
-import com.hebin.project.widget.TestDialog
-import com.jude.rollviewpager.hintview.ColorPointHintView
 import kotlinx.android.synthetic.main.activity_main.*
 import me.nereo.multi_image_selector.MultiImageSelector
 import me.nereo.multi_image_selector.MultiImageSelectorActivity
@@ -31,10 +27,7 @@ class MainActivity : BaseActivity() {
                     .multi() // 多选模式, 默认模式;
                     .start(this, 1)
         }
-        tvWebView.setOnClickListener {
-            //            startActivity<WebviewActivity>()
-            TestDialog(context).show()
-        }
+        tvWebView.setOnClickListener { startActivity<WebviewActivity>() }
     }
 
 
