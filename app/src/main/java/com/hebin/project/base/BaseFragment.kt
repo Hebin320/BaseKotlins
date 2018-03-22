@@ -2,7 +2,7 @@ package com.hebin.base
 
 import android.support.v4.app.Fragment
 import com.taorouw.utils.DialogUtil
-import com.zerom.management.mInterface.base.BaseView
+import com.hebin.project.mInterface.base.BaseView
 
 /**
  * Author Hebin
@@ -15,7 +15,7 @@ import com.zerom.management.mInterface.base.BaseView
  * <p>
  * 说明：
  */
-class BaseFragment : Fragment() ,BaseView{
+class BaseFragment : Fragment() , BaseView {
     override fun showLoading() {
         DialogUtil.showDialog(context)
     }

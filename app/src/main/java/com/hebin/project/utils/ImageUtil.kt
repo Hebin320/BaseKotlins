@@ -1,6 +1,7 @@
 package com.hebin.utils
 
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -12,6 +13,7 @@ import com.bumptech.glide.util.Util
 import com.hebin.project.R
 import com.hebin.project.tools.glide.GlideCircleTransform
 import com.hebin.project.tools.glide.GlideRoundTransform
+import me.nereo.multi_image_selector.MultiImageSelector
 import java.io.IOException
 
 
@@ -36,6 +38,13 @@ class ImageUtil  {
             return BitmapFactory.decodeFile(file, options)
         }
 
+
+        fun selectImage(activity: Activity, size: Int, REQUEST_CODE: Int) {
+            MultiImageSelector.create()
+                    .showCamera(true) // 是否显示相机. 默认为显示
+                    .count(size) // 最大选择图片数量, 默认为9. 只有在选择模式为多选时有效
+                    .start(activity, REQUEST_CODE)
+        }
 
         /**
          * 将图片加载到ImageView中，显示为圆角图片
@@ -97,48 +106,6 @@ class ImageUtil  {
             }
         }
 
-        /**
-         * 读取图片属性：旋转的角度
-         * @param path 图片绝对路径
-         * *
-         * @return degree旋转的角度
-         */
-        fun readPictureDegree(path: String): Int {
-            var degree = 0
-            try {
-                val exifInterface = ExifInterface(path)
-                val orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
-                when (orientation) {
-                    ExifInterface.ORIENTATION_ROTATE_90 -> degree = 90
-                    ExifInterface.ORIENTATION_ROTATE_180 -> degree = 180
-                    ExifInterface.ORIENTATION_ROTATE_270 -> degree = 270
-                }
-            } catch (e: IOException) {
-                e.printStackTrace()
-                return degree
-            }
-
-            return degree
-        }
-
-        /**
-         * 旋转图片，使图片保持正确的方向。
-         * @param bitmap 原始图片
-         * *
-         * @param degrees 原始图片的角度
-         * *
-         * @return Bitmap 旋转后的图片
-         */
-        fun rotateBitmap(bitmap: Bitmap?, degrees: Int): Bitmap {
-            if (degrees == 0 || null == bitmap) {
-                return bitmap!!
-            }
-            val matrix = Matrix()
-            matrix.setRotate(degrees.toFloat(), (bitmap.width / 2).toFloat(), (bitmap.height / 2).toFloat())
-            val bmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-            bitmap.recycle()
-            return bmp
-        }
     }
 
 }

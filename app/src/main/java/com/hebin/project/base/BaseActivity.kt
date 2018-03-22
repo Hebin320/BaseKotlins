@@ -2,12 +2,12 @@
 
 package com.hebin.project.base
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import com.hebin.utils.ActivityManagerUtil
 import com.taorouw.utils.DialogUtil
-import com.zerom.management.mInterface.base.BaseView
+import com.hebin.project.mInterface.base.BaseView
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 
 
 /**
@@ -21,7 +21,7 @@ import com.zerom.management.mInterface.base.BaseView
  * <p>
  * 说明：BaseActivity，所有的Activity都会继承这个Activity，在此Activity中，实现一些公用方法
  */
-open class BaseActivity : AppCompatActivity() ,BaseView{
+open class BaseActivity : SwipeBackActivity() , BaseView {
 
     var context: Context = this@BaseActivity
 

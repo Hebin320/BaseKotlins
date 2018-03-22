@@ -1,4 +1,4 @@
-package com.zerom.management.mInterface.base
+package com.hebin.project.mInterface.base
 
 /**
  * Author Hebin

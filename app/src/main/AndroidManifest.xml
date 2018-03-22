@@ -36,9 +36,11 @@
                 android:resource="@xml/file_provider" />
         </provider>
 
-        <activity android:name=".base.BaseActivity"/>
+        <activity android:name=".base.BaseActivity" />
 
-        <activity android:name=".ui.universal.MainActivity">
+        <activity
+            android:name=".ui.universal.MainActivity"
+            android:theme="@style/MainTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +50,8 @@
         <activity
             android:name=".ui.universal.WebviewActivity"
             android:configChanges="orientation|screenSize"
-            android:hardwareAccelerated="true"/>
+            android:hardwareAccelerated="true" />
+        <activity android:name=".ui.universal.DomainActivity" />
     </application>
 
 </manifest>

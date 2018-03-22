@@ -2,20 +2,21 @@ package com.hebin.project.ui.universal
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.LinearLayout
 import com.hebin.project.R
-import com.just.library.AgentWeb
-import com.just.library.ChromeClientCallbackManager
+import com.hebin.project.base.BaseActivity
+import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.activity_webview.*
 import kotlinx.android.synthetic.main.public_simple_title.*
 
 
-class WebviewActivity : AppCompatActivity(), ChromeClientCallbackManager.ReceivedTitleCallback {
+class WebviewActivity : BaseActivity(){
 
-    var mAgentWeb: AgentWeb? = null
-    var webview: WebView? = null
+   private var mAgentWeb: AgentWeb? = null
+   private var webview: WebView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +36,34 @@ class WebviewActivity : AppCompatActivity(), ChromeClientCallbackManager.Receive
         mAgentWeb = AgentWeb.with(this)//传入Activity
                 .setAgentWebParent(llWebviewActivity, LinearLayout.LayoutParams(-1, -1))
                 //传入AgentWeb 的父控件 ，如果父控件为 RelativeLayout ， 那么第二参数需要传入 RelativeLayout.LayoutParams ,第一个参数和第二个参数应该对应。
-                .useDefaultIndicator()// 使用默认进度条
-                .setIndicatorColorWithHeight(Color.parseColor("#00A6FF"), 4)
-                .setReceivedTitleCallback(this)
+                .useDefaultIndicator(Color.parseColor("#00A6FF"), 4)// 使用默认进度条
+                .setWebChromeClient(mWebChromeClient)
+                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
                 .createAgentWeb()
                 .ready()
                 .go("http://www.jd.com")
-        webview = mAgentWeb?.webCreator?.get()
+        webview = mAgentWeb?.webCreator?.webView
+        webview?.settings?.setSupportZoom(true)
+        // 设置出现缩放工具
+        webview?.settings?.builtInZoomControls = true
+        //扩大比例的缩放
+        webview?.settings?.useWideViewPort = true
+        //自适应屏幕
+        webview?.settings?.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN
+        webview?.settings?.loadWithOverviewMode = true
     }
 
-    override fun onReceivedTitle(p0: WebView?, p1: String?) {
-        tvTitle.text = p1
+
+    private val mWebChromeClient = object : WebChromeClient() {
+        override fun onProgressChanged(view: WebView, newProgress: Int) {
+            //do you work
+            //            Log.i("Info","onProgress:"+newProgress);
+        }
+
+        override fun onReceivedTitle(view: WebView, title: String) {
+            super.onReceivedTitle(view, title)
+            tvTitle.text = title
+        }
     }
 
     private fun goBack() {

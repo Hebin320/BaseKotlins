@@ -19,58 +19,63 @@ import java.util.*
  * <p>
  * describe：
  */
-class ResultDealUtil(val context: Context, val results: String) {
+@SuppressLint("StaticFieldLeak")
+class ResultDealUtil(val context: Context) {
 
     companion object {
-        @SuppressLint("StaticFieldLeak")
+
         var resultDealUtil: ResultDealUtil? = null
 
-        fun set(context: Context, results: String): ResultDealUtil {
+        fun creat(context: Context): ResultDealUtil? {
             if (resultDealUtil == null) {
-                resultDealUtil = ResultDealUtil(context, results)
+                resultDealUtil = ResultDealUtil(context)
             }
-            return resultDealUtil!!
+            return resultDealUtil
         }
     }
 
 
-    fun getResult(listener: Listener): ResultDealUtil {
+    private var successToast = false
+    private var failedToast = false
+    private var allToast = false
+
+
+    fun successToast(): ResultDealUtil? {
+        successToast = true
+        return resultDealUtil
+    }
+
+    fun failedToast(): ResultDealUtil? {
+        failedToast = true
+        return resultDealUtil
+    }
+
+    fun allToast(): ResultDealUtil? {
+        allToast = true
+        return resultDealUtil
+    }
+
+
+    fun getResult(results: String, listener: Listener) {
         val json = JSONObject(results)
         if (json.getBoolean("status")) {
             listener.getSuccess()
             if (successToast) {
                 ToastUtil.showToast(context, json.getString("info"))
+                successToast = false
             }
         } else {
             listener.getFailed(json)
             AppUtil.checkLoad(context, json.getString("info"))
             if (failedToast) {
                 ToastUtil.showToast(context, json.getString("info"))
+                failedToast = false
             }
         }
         if (allToast) {
             ToastUtil.showToast(context, json.getString("info"))
+            allToast = false
         }
-        return resultDealUtil!!
-    }
-
-    private var successToast = false
-    private var failedToast = false
-    private var allToast = false
-
-    fun successToast(): ResultDealUtil {
-        successToast = true
-        return resultDealUtil!!
-    }
-
-    fun failedToast(): ResultDealUtil {
-        failedToast = true
-        return resultDealUtil!!
-    }
-
-    fun allToast(): ResultDealUtil {
-        allToast = true
-        return resultDealUtil!!
     }
 
 

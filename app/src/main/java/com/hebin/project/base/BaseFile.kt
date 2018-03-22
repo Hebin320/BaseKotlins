@@ -18,11 +18,11 @@ class BaseFile {
 
     companion object {
 
-        val TOKEN = "TOKEN"
-        val USERID = "USERID"
-        val SHOPID = "SHOPID"
-        val DOMAIN = "DOMAIN"
-        val WEBDOMAIN = "WEBDOMAIN"
+        const val TOKEN = "TOKEN"
+        const val USERID = "USERID"
+        const val SHOPID = "SHOPID"
+        const val DOMAIN = "DOMAIN"
+        const val WEBDOMAIN = "WEBDOMAIN"
 
 
         /**

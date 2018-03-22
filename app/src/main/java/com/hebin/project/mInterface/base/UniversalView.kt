@@ -1,5 +1,7 @@
 package com.zerom.management.mInterface.base
 
+import com.hebin.project.mInterface.base.BaseView
+
 /**
  * Author Hebin
  * <p>

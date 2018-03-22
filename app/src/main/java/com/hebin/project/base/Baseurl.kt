@@ -35,7 +35,7 @@ class Baseurl {
             val doMain = when (BaseFile.loadString(context, BaseFile.WEBDOMAIN)) {
                 "" -> "http://www.baidu.com"
             // 正式服务器
-                "{getDoMain(context)}" -> "www.baidu.com"
+                "domain" -> "www.baidu.com"
             // 测试服务器
                 "test" -> "http://www.baidu.com"
             // 自定义服务器

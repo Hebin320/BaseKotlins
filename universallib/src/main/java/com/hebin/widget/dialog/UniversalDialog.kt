@@ -3,7 +3,6 @@ package com.hebin.widget.dialog
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
-import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.Window
@@ -20,24 +19,25 @@ import com.hebin.universalelib.R
  * <p>
  * 说明：设置通用的Dialog
  */
-class UniversalDialog(val context: Context) {
+class UniversalDialog {
+
 
     companion object {
 
-        @SuppressLint("StaticFieldLeak")
         private var universalDialog: UniversalDialog? = null
 
 
-        fun create(context: Context): UniversalDialog {
+        fun create(): UniversalDialog {
             if (universalDialog == null) {
-                universalDialog = UniversalDialog(context)
+                universalDialog = UniversalDialog()
             }
             return universalDialog!!
         }
 
     }
 
-    private var isTransparent: Boolean = true
+
+    private var isDimenabled: Boolean = false
     private var type: String = "1"
     private var layoutId: Int = 0
     private var animations: Int = 0
@@ -47,8 +47,8 @@ class UniversalDialog(val context: Context) {
 
 
     // 设置背景透明，默认背景是模糊的
-    fun setTransparent(): UniversalDialog {
-        isTransparent = true
+    fun setDimenabled(): UniversalDialog {
+        isDimenabled = true
         return universalDialog!!
     }
 
@@ -89,11 +89,11 @@ class UniversalDialog(val context: Context) {
     }
 
 
-    fun show(): Dialog {
-        val dialog = if (isTransparent) {
-            Dialog(context, R.style.dialog_transparent)
-        } else {
+    fun show(context: Context): Dialog {
+        val dialog = if (isDimenabled) {
             Dialog(context, R.style.dialog_dimenabled)
+        } else {
+            Dialog(context, R.style.dialog_transparent)
         }
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(layoutId)
