@@ -2,7 +2,7 @@ package com.zerom.management.base.okgo
 
 import android.content.Context
 import com.lzy.okgo.request.BaseRequest
-import com.taorouw.utils.ToastUtil
+import com.hebin.project.utils.printData
 import com.zerom.management.mInterface.base.SuccessListener
 import com.zerom.management.mInterface.base.UniversalView
 
@@ -42,7 +42,7 @@ class BaseOkgoPost {
                         override fun onSuccess(result: String?, p1: okhttp3.Call?, p2: okhttp3.Response?) {
                             universalView.hideErroLayout()
                             successListener.onSuccess(context, type, result!!)
-                            ToastUtil.printData(result)
+                            printData(result)
                         }
 
                         override fun onAfter(t: String?, e: java.lang.Exception?) {

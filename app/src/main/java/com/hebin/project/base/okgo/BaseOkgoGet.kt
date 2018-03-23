@@ -4,7 +4,7 @@ import android.content.Context
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.callback.StringCallback
 import com.lzy.okgo.request.BaseRequest
-import com.taorouw.utils.ToastUtil
+import com.hebin.project.utils.printData
 import com.zerom.management.mInterface.base.SuccessListener
 import com.zerom.management.mInterface.base.UniversalView
 import okhttp3.Call
@@ -42,7 +42,7 @@ open class BaseOkgoGet {
                         }
 
                         override fun onSuccess(s: String, call: Call, response: Response) {
-                            ToastUtil.printData(s)
+                            printData(s)
                             universal.hideErroLayout()
                             successListener.onSuccess(context, type, s)
                         }

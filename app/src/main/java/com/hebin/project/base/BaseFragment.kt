@@ -1,7 +1,7 @@
 package com.hebin.base
 
 import android.support.v4.app.Fragment
-import com.taorouw.utils.DialogUtil
+import com.hebin.utils.DialogUtil
 import com.hebin.project.mInterface.base.BaseView
 
 /**

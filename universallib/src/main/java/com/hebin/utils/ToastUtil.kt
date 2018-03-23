@@ -1,7 +1,10 @@
-package com.taorouw.utils
+@file:Suppress("NOTHING_TO_INLINE")
+
+package com.hebin.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -96,7 +99,15 @@ class ToastUtil {
          * 打印数据
          */
         fun printData(string: String) {
-            println("Hebin" + string)
+            println("Hebin$string")
+        }
+
+        fun printLog(string: String) {
+            Log.e("Hebin", string)
         }
     }
+
 }
+
+
+

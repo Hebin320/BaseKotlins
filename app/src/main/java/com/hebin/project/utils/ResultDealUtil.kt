@@ -2,11 +2,9 @@ package com.hebin.project.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.google.gson.Gson
 import com.taorouw.utils.AppUtil
-import com.taorouw.utils.ToastUtil
+import com.hebin.utils.ToastUtil
 import org.json.JSONObject
-import java.util.*
 
 /**
  * Author Hebin
@@ -26,11 +24,11 @@ class ResultDealUtil(val context: Context) {
 
         var resultDealUtil: ResultDealUtil? = null
 
-        fun creat(context: Context): ResultDealUtil? {
+        fun creat(context: Context): ResultDealUtil {
             if (resultDealUtil == null) {
                 resultDealUtil = ResultDealUtil(context)
             }
-            return resultDealUtil
+            return resultDealUtil!!
         }
     }
 
@@ -40,19 +38,19 @@ class ResultDealUtil(val context: Context) {
     private var allToast = false
 
 
-    fun successToast(): ResultDealUtil? {
+    fun successToast(): ResultDealUtil {
         successToast = true
-        return resultDealUtil
+        return resultDealUtil!!
     }
 
-    fun failedToast(): ResultDealUtil? {
+    fun failedToast(): ResultDealUtil {
         failedToast = true
-        return resultDealUtil
+        return resultDealUtil!!
     }
 
-    fun allToast(): ResultDealUtil? {
+    fun allToast(): ResultDealUtil {
         allToast = true
-        return resultDealUtil
+        return resultDealUtil!!
     }
 
 

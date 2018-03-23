@@ -5,7 +5,7 @@ import android.widget.Switch
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
 import com.taorouw.base.BaseFile
-import com.taorouw.utils.ToastUtil
+import com.hebin.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_domain.*
 import kotlinx.android.synthetic.main.public_simple_title.*
 

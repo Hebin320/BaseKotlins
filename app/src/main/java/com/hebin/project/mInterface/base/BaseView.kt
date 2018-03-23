@@ -27,4 +27,5 @@ interface BaseView {
     fun hideErroLayout()
     // 请求失败后，将得到的结果通过接口，从P层传到V层
     fun getFailed(type: Any, T: Any)
+
 }

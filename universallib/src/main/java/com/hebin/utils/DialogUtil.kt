@@ -1,4 +1,6 @@
-package com.taorouw.utils
+@file:Suppress("NOTHING_TO_INLINE")
+
+package com.hebin.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -6,7 +8,6 @@ import android.app.Dialog
 import android.content.Context
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.hebin.universalelib.R
 import kotlinx.android.synthetic.main.public_loading.*
@@ -34,7 +35,7 @@ class DialogUtil {
 
 
         @SuppressLint("WrongConstant")
-                //显示一个加载中的全屏对话框
+        //显示一个加载中的全屏对话框
         fun showDialog(context: Context) {
             if (progressDialog == null || !progressDialog!!.isShowing) {
                 progressDialog = Dialog(context, R.style.dialog_dimenabled)
@@ -42,7 +43,7 @@ class DialogUtil {
                 progressDialog?.show()
                 progressDialog?.setContentView(R.layout.public_loading)
                 progressDialog?.llLoading?.visibility = View.VISIBLE
-                progressDialog?.avLoading?.layoutParams = LinearLayout.LayoutParams(WindowUtil.getSwidth(context as Activity) / 8, WindowUtil.getSwidth(context) / 8) as ViewGroup.LayoutParams?
+                progressDialog?.avLoading?.layoutParams = LinearLayout.LayoutParams(WindowUtil.getSwidth(context as Activity) / 8, WindowUtil.getSwidth(context) / 8)
                 val window = progressDialog!!.window!!
                 val layoutParams = window.attributes
                 layoutParams.width = (WindowUtil.getSwidth(context) / 3.2).toInt()
@@ -61,5 +62,5 @@ class DialogUtil {
         }
     }
 
-
 }
+

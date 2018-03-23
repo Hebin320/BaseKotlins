@@ -1,4 +1,6 @@
-package com.taorouw.utils
+@file:Suppress("NOTHING_TO_INLINE")
+
+package com.hebin.utils
 
 import android.app.Activity
 import android.graphics.Point
@@ -23,10 +25,10 @@ import android.view.WindowManager
  *
  * 说明：关于屏幕的一些方法工具类
  */
+
 class WindowUtil {
 
     companion object {
-
         /**
          * 获取状态栏高度
          */
@@ -102,6 +104,5 @@ class WindowUtil {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN)
         }
     }
-
 
 }

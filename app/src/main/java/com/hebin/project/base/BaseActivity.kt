@@ -3,10 +3,9 @@
 package com.hebin.project.base
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import com.hebin.utils.ActivityManagerUtil
-import com.taorouw.utils.DialogUtil
 import com.hebin.project.mInterface.base.BaseView
+import com.hebin.utils.DialogUtil
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 
 

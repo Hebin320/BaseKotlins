@@ -28,7 +28,6 @@ class EditTextTool {
 
     /**
      * 显示、隐藏EditText的内容
-
      * @param checkBox 眼睛图标
      * *
      * @param editText 文本框
@@ -43,7 +42,7 @@ class EditTextTool {
                 checkBox[i].isChecked = true
             }
         }
-        return this
+        return editTextTool!!
     }
 
     /**
@@ -53,7 +52,7 @@ class EditTextTool {
         for (anEditText in editText) {
             anEditText.transformationMethod = PasswordTransformationMethod.getInstance()
         }
-        return this
+        return editTextTool!!
     }
 
 
@@ -71,7 +70,7 @@ class EditTextTool {
                 }
             }
         }
-        return this
+        return editTextTool!!
     }
 
     /**
@@ -108,7 +107,7 @@ class EditTextTool {
                 }
             })
         }
-        return this
+        return editTextTool!!
     }
 
     /**
@@ -119,7 +118,7 @@ class EditTextTool {
             textView.paint.flags = Paint.UNDERLINE_TEXT_FLAG //下划线
             textView.paint.isAntiAlias = true//抗锯齿
         }
-        return this
+        return editTextTool!!
     }
 
     /**
@@ -147,7 +146,7 @@ class EditTextTool {
                 })
             }
         }
-        return this
+        return editTextTool!!
     }
 
     fun etChangeDoSomeThing(editTexts: EditText, doSomeThing: DoSomeThing): EditTextTool {
@@ -162,7 +161,7 @@ class EditTextTool {
                 doSomeThing.doSomeThing(ET_CHANGE_DOSOMETHING_TAG, editable.toString())
             }
         })
-        return this
+        return editTextTool!!
     }
 
     /**
@@ -180,7 +179,7 @@ class EditTextTool {
         val style = SpannableStringBuilder(allString)
         style.setSpan(ForegroundColorSpan(Color.parseColor("#10b478")), fstart, fend, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
         textView.text = style
-        return this
+        return editTextTool!!
     }
 
 
@@ -204,21 +203,21 @@ class EditTextTool {
                 textView.isEnabled = true
             }
         }.start()
-        return this
+        return editTextTool!!
     }
 
+    /***
+     * 获得隐藏的手机号（用*号进行遮掩处理）
+     * @param phone 手机号码
+     */
     @SuppressLint("SetTextI18n")
-            /***
-             * 获得隐藏的手机号（用*号进行遮掩处理）
-             * @param phone 手机号码
-             */
     fun hidePhoneWithStar(textView: TextView, phone: String): EditTextTool {
         if (!TextUtils.isEmpty(phone)) {
             if (phone.length == 11) {
                 textView.text = phone.substring(0, 3) + "****" + phone.substring(7, 11)
             }
         }
-        return this
+        return editTextTool!!
     }
 
     /**
@@ -235,28 +234,28 @@ class EditTextTool {
                 }
             }
         }
-        return this
+        return editTextTool!!
     }
 
     companion object {
 
-        var instance: EditTextTool? = null
+        var editTextTool: EditTextTool? = null
 
-        fun mInstance(): EditTextTool? {
-            if (instance == null) {
+        fun creat(): EditTextTool {
+            if (editTextTool == null) {
                 synchronized(EditTextTool::class.java) {
-                    if (instance == null) {
-                        instance = EditTextTool()
+                    if (editTextTool == null) {
+                        editTextTool = EditTextTool()
                     }
                 }
             }
-            return instance
+            return editTextTool!!
         }
 
         /**
          * 监听文本框内容，自定义操作
          */
-        val ET_CHANGE_DOSOMETHING_TAG = "ET_CHANGE_DOSOMETHING_TAG"
+        const val ET_CHANGE_DOSOMETHING_TAG = "ET_CHANGE_DOSOMETHING_TAG"
     }
 
 
