@@ -22,20 +22,6 @@ import com.hebin.universalelib.R
 class UniversalDialog {
 
 
-    companion object {
-
-        private var universalDialog: UniversalDialog? = null
-
-
-        fun create(): UniversalDialog {
-            if (universalDialog == null) {
-                universalDialog = UniversalDialog()
-            }
-            return universalDialog!!
-        }
-
-    }
-
 
     private var isDimenabled: Boolean = false
     private var type: String = "1"
@@ -49,43 +35,43 @@ class UniversalDialog {
     // 设置背景透明，默认背景是模糊的
     fun setDimenabled(): UniversalDialog {
         isDimenabled = true
-        return universalDialog!!
+        return this
     }
 
     // 对话框类型，1 = 宽高自适应 2 = 宽全屏高自适应 3 = 宽自适应高全屏 4 = 宽高全屏
     fun setType(type: String): UniversalDialog {
         this.type = type
-        return universalDialog!!
+        return this
     }
 
     // 布局
     fun setLayoutId(layoutId: Int): UniversalDialog {
         this.layoutId = layoutId
-        return universalDialog!!
+        return this
     }
 
     // 动画
     fun setAnimations(animations: Int): UniversalDialog {
         this.animations = animations
-        return universalDialog!!
+        return this
     }
 
     // 位置，默认居中
     fun setGravity(gravity: Int): UniversalDialog {
         this.gravity = gravity
-        return universalDialog!!
+        return this
     }
 
     // X轴边距
     fun setMarginX(marginX: Int): UniversalDialog {
         this.marginX = marginX
-        return universalDialog!!
+        return this
     }
 
     // Y轴边距
     fun setMarginY(marginY: Int): UniversalDialog {
         this.marginY = marginY
-        return universalDialog!!
+        return this
     }
 
 
