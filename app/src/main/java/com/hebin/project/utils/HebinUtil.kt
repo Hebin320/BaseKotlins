@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import com.hebin.project.tools.recyclerview.RecyclerViewTool
 import com.hebin.utils.LostFocusUtil
 import com.hebin.utils.ScaleAnimatorUtil
 import com.hebin.utils.ToastUtil
@@ -97,3 +98,8 @@ inline fun listLostByView(view: View) = LostFocusUtil.listLostByView(view)
  *  隐藏输入法
  * */
 inline fun hideImmByView(context: Context, view: View) = LostFocusUtil.hideImmByView(context, view)
+
+/**
+ *  Recyclerview 多布局数据源设置
+ * */
+inline fun setMultiple(num: Int) = RecyclerViewTool().setMultiple(num)

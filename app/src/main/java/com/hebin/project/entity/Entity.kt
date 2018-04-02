@@ -1,5 +1,7 @@
 package com.hebin.entity
 
+import com.chad.library.adapter.base.entity.MultiItemEntity
+
 /**
  * Author Hebin
  * <p>
@@ -18,4 +20,29 @@ package com.hebin.entity
  * */
 data class DataEntity(var name: String, var age: Int, var tel: String, var pwd: String) {
     constructor() : this("", 0, "", "")
+}
+
+data class TestEntity(var list: MutableList<ListEntity>) {
+    data class ListEntity(var title: String) {
+        constructor() : this("")
+    }
+}
+
+class MultipleItem(private val itemType: Int) : MultiItemEntity {
+
+    override fun getItemType(): Int {
+        return itemType
+    }
+
+    companion object {
+        const val ONE = 1
+        const val TWO = 2
+        const val THREE = 3
+        const val FOUR = 4
+        const val FIVE = 5
+        const val SIX = 6
+        const val SEVEN = 7
+        const val EIGHT = 8
+        const val NINE = 9
+    }
 }

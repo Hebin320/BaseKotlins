@@ -8,15 +8,10 @@ import android.os.Bundle
 import android.util.Log
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
-import com.hebin.project.utils.lostByView
-import com.hebin.project.widget.invoke
+import com.hebin.project.ui.login.TestRecyclerviewActivity
 import com.hebin.utils.ImageUtil
-import com.hebin.project.utils.showToast
 import kotlinx.android.synthetic.main.activity_main.*
 import me.nereo.multi_image_selector.MultiImageSelectorActivity
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.dip
-import org.jetbrains.anko.info
 import org.jetbrains.anko.startActivity
 import java.util.*
 
@@ -30,7 +25,7 @@ class MainActivity : BaseActivity() {
         swipeBackLayout.setEnableGesture(false)
         tvPic.setOnClickListener { ImageUtil.selectImage(this, 9, 0x11) }
         tvWebView.setOnClickListener { startActivity<WebviewActivity>() }
-        tvDomain.setOnClickListener { startActivity<DomainActivity>() }
+        tvDomain.setOnClickListener { startActivity<TestRecyclerviewActivity>() }
     }
 
 
