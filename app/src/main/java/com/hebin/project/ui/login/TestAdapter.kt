@@ -1,8 +1,8 @@
 package com.hebin.project.ui.login
 
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hebin.entity.TestEntity
+import com.hebin.project.widget.refresh.HebinBaseAdapter
 
 /**
  * Author Hebin
@@ -15,11 +15,12 @@ import com.hebin.entity.TestEntity
  * <p>
  * describe：
  */
-class TestAdapter(layout: Int, var list: MutableList<TestEntity.ListEntity>) : BaseQuickAdapter<TestEntity.ListEntity, BaseViewHolder>(layout, list) {
+class TestAdapter(layout: Int, var list: MutableList<TestEntity.ListEntity>) : HebinBaseAdapter<TestEntity.ListEntity, BaseViewHolder>(layout, list) {
+
 
     fun refresh(list: MutableList<TestEntity.ListEntity>) {
         this.list = list
-        notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
     override fun convert(helper: BaseViewHolder, item: TestEntity.ListEntity) {

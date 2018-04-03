@@ -1,7 +1,6 @@
 package com.hebin.project.widget.refresh
 
 import android.content.Context
-import android.graphics.drawable.AnimationDrawable
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
 import android.util.AttributeSet
@@ -9,7 +8,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-
 import com.hebin.indicator.AVLoadingIndicatorView
 import com.hebin.project.R
 import com.lcodecore.tkrefreshlayout.IHeaderView
@@ -17,17 +15,13 @@ import com.lcodecore.tkrefreshlayout.OnAnimEndListener
 
 /**
  * Author Hebin
- *
- *
- * created at 2018/4/2
- *
- *
+ * <p>
+ * created at 2018/4/3
+ * <p>
  * blog: http://blog.csdn.net/hebin320320
- *
- *
+ * <p>
  * GitHub: https://github.com/Hebin320
- *
- *
+ * <p>
  * describe：
  */
 class HebinRefreshView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr), IHeaderView {

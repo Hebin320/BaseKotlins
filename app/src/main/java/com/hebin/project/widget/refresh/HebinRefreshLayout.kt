@@ -7,17 +7,13 @@ import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
 
 /**
  * Author Hebin
- *
- *
- * created at 2018/4/2
- *
- *
+ * <p>
+ * created at 2018/4/3
+ * <p>
  * blog: http://blog.csdn.net/hebin320320
- *
- *
+ * <p>
  * GitHub: https://github.com/Hebin320
- *
- *
+ * <p>
  * describe：
  */
 class HebinRefreshLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : TwinklingRefreshLayout(context, attrs, defStyleAttr) {
@@ -39,13 +35,9 @@ class HebinRefreshLayout @JvmOverloads constructor(context: Context, attrs: Attr
                 super.onRefresh(refreshLayout)
                 listener?.onRefresh()
             }
-
-            override fun onLoadMore(refreshLayout: TwinklingRefreshLayout?) {
-                super.onLoadMore(refreshLayout)
-                listener?.onLoadMore()
-            }
         })
         this.setHeaderHeight(60f)
+        this.setEnableLoadmore(false)
     }
 
     fun setIndicatorColor(color: Int) {
@@ -62,7 +54,6 @@ class HebinRefreshLayout @JvmOverloads constructor(context: Context, attrs: Attr
 
     interface OnRefreshListener {
         fun onRefresh()
-        fun onLoadMore()
     }
 
 

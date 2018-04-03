@@ -40,7 +40,6 @@ class AppUtil  {
         private fun getImei(context: Context, imei: String): String {
             var imei = imei
             try {
-
                 val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
                 imei = telephonyManager.deviceId
             } catch (ignored: Exception) {

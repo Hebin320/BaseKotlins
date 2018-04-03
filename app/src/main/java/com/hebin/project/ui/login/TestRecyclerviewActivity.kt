@@ -2,21 +2,19 @@
 
 package com.hebin.project.ui.login
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
-import android.view.View
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.hebin.entity.TestEntity
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
-import com.hebin.project.utils.showToast
-import com.hebin.project.widget.refresh.HebinRefreshLayout
+import com.hebin.project.widget.refresh.HebinBaseAdapter
 import kotlinx.android.synthetic.main.activity_test_recyclerview.*
 
-class TestRecyclerviewActivity : BaseActivity(), HebinRefreshLayout.OnRefreshListener,
-        BaseQuickAdapter.OnItemChildClickListener {
+class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListener {
 
+    var count = 1
     var adapter: TestAdapter? = null
     var mList: MutableList<TestEntity.ListEntity> = ArrayList()
 
@@ -32,38 +30,53 @@ class TestRecyclerviewActivity : BaseActivity(), HebinRefreshLayout.OnRefreshLis
     }
 
     private fun setList() {
-        val title = arrayOf("loo", "周四", "伤口", "小程序", "热啊", "电饭锅", "现在", "驱蚊器", "郭德纲")
+        val title = arrayOf("loo", "周四", "伤口", "小程序", "热啊", "电饭锅", "loo", "周四", "伤口", "小程序", "热啊", "电饭锅")
         for (s in title) {
             val entity = TestEntity.ListEntity()
             entity.title = s
             mList.add(entity)
         }
-        rvTest.layoutManager = LinearLayoutManager(this)
-        adapter = TestAdapter(R.layout.test_item, mList)
+        rvTest.layoutManager = LinearLayoutManager(context)
+        adapter = TestAdapter(R.layout.public_simple_title, mList)
         rvTest.adapter = adapter
-        adapter?.onItemChildClickListener = this
-        erlTest.setRefreshListener(this)
-    }
-
-
-    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        showToast(context, "${position}项")
+        adapter?.setRefreshListener(hrlTest, this)
+        adapter?.disableLoadMoreIfNotFullPage(rvTest)
     }
 
     override fun onRefresh() {
-        Handler().postDelayed({
-            mList.addAll(mList)
-            adapter?.refresh(mList)
-            erlTest.finishRefreshing()
-        }, 2000)
+        mList.clear()
+        val title = arrayOf("loo", "周四", "伤口", "小程序", "热啊", "loo", "周四", "伤口", "小程序", "热啊")
+        for (s in title) {
+            val entity = TestEntity.ListEntity()
+            entity.title = s
+            mList.add(entity)
+        }
+        adapter?.refresh(mList)
+        hrlTest.finishRefreshing()
+        adapter?.disableLoadMoreIfNotFullPage(rvTest)
     }
 
     override fun onLoadMore() {
-        Handler().postDelayed({
-            mList.removeAt(0)
-            adapter?.refresh(mList)
-            erlTest.finishLoadmore()
-        }, 2000)
+        when (count) {
+            1 -> Handler().postDelayed({
+                mList.addAll(mList)
+                adapter?.refresh(mList)
+                adapter?.loadMoreComplete()
+                count += 1
+            }, 2000)
+            2 -> {
+                Handler().postDelayed({
+                    adapter?.loadMoreFail()
+                    count += 1
+                }, 2000)
+            }
+            else ->
+                Handler().postDelayed({
+                    adapter?.loadMoreEnd()
+                }, 2000)
+        }
     }
 
+
 }
+

@@ -1,6 +1,5 @@
 package com.hebin.entity
 
-import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**
  * Author Hebin
@@ -28,9 +27,9 @@ data class TestEntity(var list: MutableList<ListEntity>) {
     }
 }
 
-class MultipleItem(private val itemType: Int) : MultiItemEntity {
+class MultipleItem(private val itemType: Int) {
 
-    override fun getItemType(): Int {
+    fun getItemType(): Int {
         return itemType
     }
 

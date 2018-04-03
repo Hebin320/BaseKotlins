@@ -1,1 +1,1 @@
-include ':app', ':multi-image-selector', ':rollviewpager', ':universallib', ':refreshlayout'
+include ':app', ':multi-image-selector', ':rollviewpager', ':universallib'

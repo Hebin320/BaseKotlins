@@ -6,19 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.hebin.project.ui.login.TestRecyclerviewActivity">
 
-
     <com.hebin.project.widget.refresh.HebinRefreshLayout
-        android:id="@+id/erlTest"
+        android:id="@+id/hrlTest"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvTest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            />
+            android:overScrollMode="never" />
 
     </com.hebin.project.widget.refresh.HebinRefreshLayout>
-
 </LinearLayout>
