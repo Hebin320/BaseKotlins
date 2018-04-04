@@ -8,8 +8,10 @@ import android.support.v7.widget.LinearLayoutManager
 import com.hebin.entity.TestEntity
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
+import com.hebin.project.utils.ResultDealUtil
 import com.hebin.project.utils.hideImmByView
 import com.hebin.project.utils.setMultiple
+import com.hebin.project.utils.showToast
 import com.hebin.project.widget.refresh.HebinBaseAdapter
 import kotlinx.android.synthetic.main.activity_test_recyclerview.*
 
@@ -23,14 +25,18 @@ class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_recyclerview)
-        setList()
-//        setTypeList()
+//        setList()
+        setTypeList()
     }
 
     private fun setTypeList() {
         rvTest.layoutManager = LinearLayoutManager(context)
         val typeAdapter = TestTypeAdapter(setMultiple(10))
         rvTest.adapter = typeAdapter
+
+        ResultDealUtil(context,"")
+                .getSuccess { showToast("我是请求成功") }
+                .getFailed {  showToast("我是请求失败") }
     }
 
     private fun setList() {

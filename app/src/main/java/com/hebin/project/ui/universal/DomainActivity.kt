@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Switch
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
+import com.hebin.project.utils.checkOrNot
+import com.hebin.project.utils.isCheck
 import com.taorouw.base.BaseFile
 import com.hebin.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_domain.*
@@ -67,14 +69,12 @@ class DomainActivity : BaseActivity() {
     private fun setSwitch(array: Array<Switch>, type: String, string: Array<String>) {
         for (i in array.indices) {
             val finalI = i
-            array[i].setOnCheckedChangeListener { _, isCheck ->
-                if (isCheck) {
-                    for (k in array.indices) {
-                        if (k == finalI) {
-                            BaseFile.saveString(context, type, string[i])
-                        } else {
-                            array[k].isChecked = false
-                        }
+            array[i].isCheck {
+                for (k in array.indices) {
+                    if (k == finalI) {
+                        BaseFile.saveString(context, type, string[i])
+                    } else {
+                        array[k].isChecked = false
                     }
                 }
             }

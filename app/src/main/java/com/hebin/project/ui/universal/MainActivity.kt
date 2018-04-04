@@ -25,7 +25,7 @@ class MainActivity : BaseActivity() {
         swipeBackLayout.setEnableGesture(false)
         tvPic.setOnClickListener { ImageUtil.selectImage(this, 9, 0x11) }
         tvWebView.setOnClickListener { startActivity<WebviewActivity>() }
-        tvDomain.setOnClickListener { startActivity<TestRecyclerviewActivity>() }
+        tvDomain.setOnClickListener { startActivity<DomainActivity>() }
     }
 
 

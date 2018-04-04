@@ -1,3 +1,5 @@
+@file:Suppress("SENSELESS_COMPARISON")
+
 package com.hebin.project.utils
 
 import android.annotation.SuppressLint
@@ -43,34 +45,42 @@ class ResultDealUtil(val context: Context, private val results: String) {
 
 
     fun getSuccess(success: () -> Unit): ResultDealUtil {
-        val json = JSONObject(results)
-        if (json.getBoolean("status")) {
-            success()
-            if (successToast) {
-                ToastUtil.showToast(context, json.getString("info"))
-                successToast = false
+        if (results != null && results.isNotEmpty()) {
+            val json = JSONObject(results)
+            if (json.getBoolean("status") != null) {
+                if (json.getBoolean("status")) {
+                    success()
+                    if (successToast) {
+                        ToastUtil.showToast(context, json.getString("info"))
+                        successToast = false
+                    }
+                }
+                if (allToast) {
+                    ToastUtil.showToast(context, json.getString("info"))
+                    allToast = false
+                }
             }
-        }
-        if (allToast) {
-            ToastUtil.showToast(context, json.getString("info"))
-            allToast = false
         }
         return this
     }
 
     fun getFailed(failed: (json: JSONObject) -> Unit): ResultDealUtil {
-        val json = JSONObject(results)
-        if (!json.getBoolean("status")) {
-            failed(json)
-            AppUtil.checkLoad(context, json.getString("info"))
-            if (failedToast) {
-                ToastUtil.showToast(context, json.getString("info"))
-                failedToast = false
+        if (results != null && results.isNotEmpty()) {
+            val json = JSONObject(results)
+            if (json.getBoolean("status") != null) {
+                if (!json.getBoolean("status")) {
+                    failed(json)
+                    AppUtil.checkLoad(context, json.getString("info"))
+                    if (failedToast) {
+                        ToastUtil.showToast(context, json.getString("info"))
+                        failedToast = false
+                    }
+                }
+                if (allToast) {
+                    ToastUtil.showToast(context, json.getString("info"))
+                    allToast = false
+                }
             }
-        }
-        if (allToast) {
-            ToastUtil.showToast(context, json.getString("info"))
-            allToast = false
         }
         return this
     }

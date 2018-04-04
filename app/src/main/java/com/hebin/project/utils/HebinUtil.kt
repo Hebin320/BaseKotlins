@@ -6,7 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.*
 import com.hebin.project.tools.recyclerview.RecyclerViewTool
 import com.hebin.utils.*
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter
@@ -95,7 +95,7 @@ inline fun setMultiple(num: Int) = RecyclerViewTool().setMultiple(num)
 
 
 /**
- *  如果不等于0
+ *  是否为0
  * */
 inline fun Int.zeroOrNot(isZero: () -> Unit, isNotZero: () -> Unit) {
     if (0 == this) {
