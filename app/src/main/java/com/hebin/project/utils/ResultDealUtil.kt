@@ -18,19 +18,7 @@ import org.json.JSONObject
  * describe：
  */
 @SuppressLint("StaticFieldLeak")
-class ResultDealUtil(val context: Context) {
-
-    companion object {
-
-        var resultDealUtil: ResultDealUtil? = null
-
-        fun creat(context: Context): ResultDealUtil {
-            if (resultDealUtil == null) {
-                resultDealUtil = ResultDealUtil(context)
-            }
-            return resultDealUtil!!
-        }
-    }
+class ResultDealUtil(val context: Context, private val results: String) {
 
 
     private var successToast = false
@@ -40,30 +28,40 @@ class ResultDealUtil(val context: Context) {
 
     fun successToast(): ResultDealUtil {
         successToast = true
-        return resultDealUtil!!
+        return this
     }
 
     fun failedToast(): ResultDealUtil {
         failedToast = true
-        return resultDealUtil!!
+        return this
     }
 
     fun allToast(): ResultDealUtil {
         allToast = true
-        return resultDealUtil!!
+        return this
     }
 
 
-    fun getResult(results: String, listener: Listener) {
+    fun getSuccess(success: () -> Unit): ResultDealUtil {
         val json = JSONObject(results)
         if (json.getBoolean("status")) {
-            listener.getSuccess()
+            success()
             if (successToast) {
                 ToastUtil.showToast(context, json.getString("info"))
                 successToast = false
             }
-        } else {
-            listener.getFailed(json)
+        }
+        if (allToast) {
+            ToastUtil.showToast(context, json.getString("info"))
+            allToast = false
+        }
+        return this
+    }
+
+    fun getFailed(failed: (json: JSONObject) -> Unit): ResultDealUtil {
+        val json = JSONObject(results)
+        if (!json.getBoolean("status")) {
+            failed(json)
             AppUtil.checkLoad(context, json.getString("info"))
             if (failedToast) {
                 ToastUtil.showToast(context, json.getString("info"))
@@ -74,12 +72,7 @@ class ResultDealUtil(val context: Context) {
             ToastUtil.showToast(context, json.getString("info"))
             allToast = false
         }
-    }
-
-
-    interface Listener {
-        fun getSuccess()
-        fun getFailed(json: JSONObject) {}
+        return this
     }
 
 

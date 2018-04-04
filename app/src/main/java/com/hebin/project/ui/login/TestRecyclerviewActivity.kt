@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.hebin.entity.TestEntity
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
+import com.hebin.project.utils.hideImmByView
 import com.hebin.project.utils.setMultiple
 import com.hebin.project.widget.refresh.HebinBaseAdapter
 import kotlinx.android.synthetic.main.activity_test_recyclerview.*
@@ -22,8 +23,8 @@ class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_recyclerview)
-//        setList()
-        setTypeList()
+        setList()
+//        setTypeList()
     }
 
     private fun setTypeList() {

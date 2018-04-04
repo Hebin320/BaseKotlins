@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.hebin.project.widget.refresh
 
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -7,17 +9,13 @@ import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
 
 /**
  * Author Hebin
- *
- *
- * created at 2018/4/3
- *
- *
+ * <p>
+ * created at 2018/4/4 16:22
+ * <p>
  * blog: http://blog.csdn.net/hebin320320
- *
- *
+ * <p>
  * GitHub: https://github.com/Hebin320
- *
- *
+ * <p>
  * describe：
  */
 abstract class HebinBaseAdapter<T, K : BaseViewHolder> : BaseQuickAdapter<T, K> {
@@ -53,6 +51,7 @@ abstract class HebinBaseAdapter<T, K : BaseViewHolder> : BaseQuickAdapter<T, K> 
         fun onRefresh()
         fun onLoadMore()
     }
+
 
 
 }
