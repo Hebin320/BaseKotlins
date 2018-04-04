@@ -2,13 +2,13 @@
 
 package com.hebin.project.ui.login
 
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import com.hebin.entity.TestEntity
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
+import com.hebin.project.utils.setMultiple
 import com.hebin.project.widget.refresh.HebinBaseAdapter
 import kotlinx.android.synthetic.main.activity_test_recyclerview.*
 
@@ -22,11 +22,14 @@ class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_recyclerview)
-        init()
-        setList()
+//        setList()
+        setTypeList()
     }
 
-    private fun init() {
+    private fun setTypeList() {
+        rvTest.layoutManager = LinearLayoutManager(context)
+        val typeAdapter = TestTypeAdapter(setMultiple(10))
+        rvTest.adapter = typeAdapter
     }
 
     private fun setList() {

@@ -2,6 +2,7 @@ package com.hebin.project.ui.login
 
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hebin.entity.TestEntity
+import com.hebin.project.R
 import com.hebin.project.widget.refresh.HebinBaseAdapter
 
 /**
@@ -24,6 +25,7 @@ class TestAdapter(layout: Int, var list: MutableList<TestEntity.ListEntity>) : H
     }
 
     override fun convert(helper: BaseViewHolder, item: TestEntity.ListEntity) {
+        helper.setText(R.id.tvTitle, item.title)
     }
 
 

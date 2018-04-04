@@ -1,8 +1,5 @@
 package com.hebin.project.widget.refresh
 
-import android.content.Context
-import android.support.v7.widget.RecyclerView
-
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter
@@ -32,6 +29,7 @@ abstract class HebinBaseAdapter<T, K : BaseViewHolder> : BaseQuickAdapter<T, K> 
     private fun init() {
         this.setLoadMoreView(NomoreView())
         this.setOnLoadMoreListener { listener?.onLoadMore() }
+        this.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM)
     }
 
     constructor(data: List<T>?) : super(data)
