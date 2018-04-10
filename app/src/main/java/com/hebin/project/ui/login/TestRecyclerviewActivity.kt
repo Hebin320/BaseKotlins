@@ -5,17 +5,23 @@ package com.hebin.project.ui.login
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.hebin.entity.DataEntity
 import com.hebin.entity.TestEntity
+import com.hebin.hxbr.allEmpty
+import com.hebin.hxbr.setVerticalLinear
+import com.hebin.hxbr.showToast
 import com.hebin.project.R
+import com.hebin.project.anko.*
 import com.hebin.project.base.BaseActivity
-import com.hebin.project.utils.ResultDealUtil
-import com.hebin.project.utils.hideImmByView
-import com.hebin.project.utils.setMultiple
-import com.hebin.project.utils.showToast
+import com.hebin.project.presenter.LoginPresenter
 import com.hebin.project.widget.refresh.HebinBaseAdapter
+import com.zerom.management.mInterface.base.UniversalView
 import kotlinx.android.synthetic.main.activity_test_recyclerview.*
 
-class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListener {
+class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListener, UniversalView, BaseQuickAdapter.OnItemChildClickListener {
+
 
     var count = 1
     var adapter: TestAdapter? = null
@@ -30,13 +36,11 @@ class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListe
     }
 
     private fun setTypeList() {
-        rvTest.layoutManager = LinearLayoutManager(context)
+        arrayListOf("", "", "", "").allEmpty({ showToast("全部为空") }, { showToast("部分不为空") })
+        rvTest.setVerticalLinear(context)
         val typeAdapter = TestTypeAdapter(setMultiple(10))
         rvTest.adapter = typeAdapter
-
-        ResultDealUtil(context,"")
-                .getSuccess { showToast("我是请求成功") }
-                .getFailed {  showToast("我是请求失败") }
+        typeAdapter.onItemChildClickListener = this
     }
 
     private fun setList() {
@@ -85,6 +89,27 @@ class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListe
                     adapter?.loadMoreEnd()
                 }, 2000)
         }
+    }
+
+
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View, position: Int) {
+        when (view.id) {
+            R.id.tvTitle -> LoginPresenter(context, this).login(true)
+            R.id.tvRight -> {
+                LoginPresenter(context, this).time(false)
+                showToast("我被点击了")
+            }
+        }
+
+    }
+
+
+    override fun getData(): Any {
+        val entity = DataEntity()
+        return entity
+    }
+
+    override fun getSuccess(type: Any, T: Any) {
     }
 
 

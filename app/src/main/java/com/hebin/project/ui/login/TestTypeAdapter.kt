@@ -33,10 +33,14 @@ class TestTypeAdapter(var list: MutableList<MultipleItem>) : BaseMultiItemQuickA
 
     override fun convert(helper: BaseViewHolder, item: MultipleItem) {
         when (item.type) {
-            MultipleItem.ONE -> helper.setText(R.id.tvTitle, item.type.toString())
-            MultipleItem.TWO -> helper.setText(R.id.tvRight, item.type.toString())
+            MultipleItem.ONE ->
+                helper.setText(R.id.tvTitle, item.type.toString())
+                        .addOnClickListener(R.id.tvTitle)
+            MultipleItem.TWO -> helper.setText(R.id.tvRight, item.type.toString()).addOnClickListener(R.id.tvRight)
         }
     }
+
+
 
 
 }

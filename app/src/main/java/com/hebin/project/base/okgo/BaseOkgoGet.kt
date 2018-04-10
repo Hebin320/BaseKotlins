@@ -1,10 +1,10 @@
 package com.hebin.project.base.okgo
 
 import android.content.Context
+import com.hebin.hxbr.printData
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.callback.StringCallback
 import com.lzy.okgo.request.BaseRequest
-import com.hebin.project.utils.printData
 import com.zerom.management.mInterface.base.SuccessListener
 import com.zerom.management.mInterface.base.UniversalView
 import okhttp3.Call
@@ -26,37 +26,65 @@ import okhttp3.Response
  */
 open class BaseOkgoGet {
 
+    var type: Int? = null
+    var url: String? = null
+    var isShow: Boolean = true
+    var universal: UniversalView? = null
+    var successListener: SuccessListener? = null
 
-    companion object {
-        /**
-         *@param type 用于一个Activity有多个网络请求的时候，在Presenter中区分回调类型
-         *
-         * @param url 请求网址
-         *
-         * */
-        fun getData(context: Context, type: Int, url: String, universal: UniversalView, successListener: SuccessListener) {
-            OkGo.get(url)
-                    .execute(object : StringCallback() {
-                        override fun onBefore(request: BaseRequest<*>?) {
-                            universal.showLoading()
+
+    fun setType(type: Int): BaseOkgoGet {
+        this.type = type
+        return this
+    }
+
+    fun setUrl(url: String): BaseOkgoGet {
+        this.url = url
+        return this
+    }
+
+    fun showLoading(isShow: Boolean): BaseOkgoGet {
+        this.isShow = isShow
+        return this
+    }
+
+    fun setView(universal: UniversalView): BaseOkgoGet {
+        this.universal = universal
+        return this
+    }
+
+    fun setListener(successListener: SuccessListener): BaseOkgoGet {
+        this.successListener = successListener
+        return this
+    }
+
+
+    fun request(context: Context) {
+        OkGo.get(url)
+                .execute(object : StringCallback() {
+                    override fun onBefore(request: BaseRequest<*>?) {
+                        if (isShow) {
+                            universal?.showLoading()
                         }
+                    }
 
-                        override fun onSuccess(s: String, call: Call, response: Response) {
-                            printData(s)
-                            universal.hideErroLayout()
-                            successListener.onSuccess(context, type, s)
+                    override fun onSuccess(s: String, call: Call, response: Response) {
+                        printData(s)
+                        universal?.hideErroLayout()
+                        successListener?.onSuccess(context, type!!, s)
+                    }
+
+
+                    override fun onError(call: Call?, response: Response?, e: Exception?) {
+                        universal?.showErroLayout()
+                    }
+
+                    override fun onAfter(s: String?, e: Exception?) {
+                        if (isShow) {
+                            universal?.hideLoading()
                         }
-
-
-                        override fun onError(call: Call?, response: Response?, e: Exception?) {
-                            universal.showErroLayout()
-                        }
-
-                        override fun onAfter(s: String?, e: Exception?) {
-                            universal.hideLoading()
-                        }
-                    })
-        }
+                    }
+                })
     }
 }
 

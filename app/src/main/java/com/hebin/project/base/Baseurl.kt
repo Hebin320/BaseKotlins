@@ -2,7 +2,7 @@ package com.hebin.base
 
 import android.content.Context
 import android.util.Log
-import com.taorouw.base.BaseFile
+import com.hebin.project.base.BaseFile
 
 /**
  * Author Hebin
@@ -56,6 +56,14 @@ class Baseurl {
          */
         fun look(context: Context): String {
             val string = "${getDoMain(context)}/diagnosis/v2/overt/look"
+            printData(string)
+            return string
+        }
+        /**
+         * 随便看看
+         */
+        fun time(context: Context): String {
+            val string = "${getDoMain(context)}/diagnosis/v2/overt/time"
             printData(string)
             return string
         }

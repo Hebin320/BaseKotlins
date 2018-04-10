@@ -26,6 +26,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'junit:junit:4.12'
+    implementation project(':hxbr')
     compile project(':universallib')
     compile project(':rollviewpager')
     compile project(':multi-image-selector')

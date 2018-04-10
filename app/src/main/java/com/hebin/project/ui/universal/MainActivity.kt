@@ -4,8 +4,12 @@ package com.hebin.project.ui.universal
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
 import com.hebin.project.ui.login.TestRecyclerviewActivity
@@ -25,7 +29,10 @@ class MainActivity : BaseActivity() {
         swipeBackLayout.setEnableGesture(false)
         tvPic.setOnClickListener { ImageUtil.selectImage(this, 9, 0x11) }
         tvWebView.setOnClickListener { startActivity<WebviewActivity>() }
-        tvDomain.setOnClickListener { startActivity<DomainActivity>() }
+        tvDomain.setOnClickListener {
+            startActivity<TestRecyclerviewActivity>()
+        }
+
     }
 
 
