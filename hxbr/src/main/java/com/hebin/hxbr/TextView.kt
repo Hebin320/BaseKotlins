@@ -2,7 +2,12 @@
 
 package com.hebin.hxbr
 
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.CheckBox
+import android.widget.RadioButton
+import android.widget.Switch
 
 /**
  * Author Hebin

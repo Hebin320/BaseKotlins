@@ -62,7 +62,7 @@ publish {
     userOrg = 'hxb1083019222'
     groupId = 'com.hebin'
     artifactId = 'hxbr'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.3'
     desc = 'This is a tool that helps developers develop kotlin projects quickly.'
     website = 'https://github.com/Hebin320/hxbt'
 }

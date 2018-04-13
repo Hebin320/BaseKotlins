@@ -20,7 +20,8 @@ import com.hebin.project.widget.refresh.HebinBaseAdapter
 import com.zerom.management.mInterface.base.UniversalView
 import kotlinx.android.synthetic.main.activity_test_recyclerview.*
 
-class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListener, UniversalView, BaseQuickAdapter.OnItemChildClickListener {
+class TestRecyclerviewActivity : BaseActivity(), HebinBaseAdapter.OnRefreshListener, UniversalView,
+        BaseQuickAdapter.OnItemChildClickListener {
 
 
     var count = 1

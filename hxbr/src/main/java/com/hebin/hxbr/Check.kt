@@ -134,3 +134,53 @@ inline fun Switch.isNotCheck(noinline isNotCheck: (switch: CompoundButton) -> Un
     }
 }
 
+/**
+ *  只选中一个
+ * */
+inline fun ArrayList<RadioButton>.onlyRadioButton() {
+    for (i in this.indices) {
+        this[i].setOnCheckedChangeListener { _, isCheck ->
+            if (isCheck) {
+                for (k in this.indices) {
+                    if (i != k) {
+                        this[k].isChecked = false
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ *  只选中一个
+ * */
+inline fun ArrayList<CheckBox>.onlyCheckBox() {
+    for (i in this.indices) {
+        this[i].setOnCheckedChangeListener { _, isCheck ->
+            if (isCheck) {
+                for (k in this.indices) {
+                    if (i != k) {
+                        this[k].isChecked = false
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ *  只选中一个
+ * */
+inline fun ArrayList<Switch>.onlySwitch() {
+    for (i in this.indices) {
+        this[i].setOnCheckedChangeListener { _, isCheck ->
+            if (isCheck) {
+                for (k in this.indices) {
+                    if (i != k) {
+                        this[k].isChecked = false
+                    }
+                }
+            }
+        }
+    }
+}

@@ -39,10 +39,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-// 指定javadoc UTF-8格式
-task javadoc(type: Javadoc) {
-    options.encoding = "utf-8"
-}
-
 //非常重要要不它不认识你的项目.kt文件名 其中airpurgeview是你的library名
 tasks.getByPath(":hxbr:releaseAndroidJavadocs").enabled = false
+
