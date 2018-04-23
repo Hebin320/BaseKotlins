@@ -116,21 +116,3 @@ import com.hebin.project.R
 //    recyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader)
 //    recyclerView.setArrowImageView(R.drawable.ic_downgrey)
 //}
-
-
-class RecyclerViewTool {
-
-    /**
-     *  Recyclerview 多布局数据源设置
-     * */
-    fun setMultiple(num: Int): MutableList<MultipleItem> {
-        val mList: MutableList<MultipleItem> = ArrayList()
-        if (num > 0) {
-            for (i in 1..num) {
-                mList.add(MultipleItem(i))
-            }
-        }
-        return mList
-    }
-
-}

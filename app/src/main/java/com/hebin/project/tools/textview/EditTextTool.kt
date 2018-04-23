@@ -12,7 +12,7 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
-import com.hebin.mInterface.DoSomeThing
+import com.hebin.project.mInterface.DoSomeThing
 
 
 /**

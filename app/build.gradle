@@ -32,7 +32,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'junit:junit:4.12'
-    compile project(':hxbr')
     compile project(':universallib')
     compile project(':rollviewpager')
     compile project(':multi-image-selector')
@@ -53,7 +52,6 @@ dependencies {
     compile "org.jetbrains.anko:anko:$anko_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-    compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
-    compile 'com.github.anzaizai:EasySwipeMenuLayout:1.1.2'
+    compile 'com.hebin:hxbr:1.0.4'
+    compile 'com.hebin:hxbrecyclerview:1.0.0'
 }

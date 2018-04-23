@@ -1,6 +1,6 @@
-package com.zerom.management.mInterface.base
+package com.hebin.project.mInterface
 
-import com.hebin.project.mInterface.base.BaseView
+import com.hebin.project.mInterface.BaseView
 
 /**
  * Author Hebin

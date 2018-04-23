@@ -1,8 +1,9 @@
 package com.hebin.base
 
 import android.support.v4.app.Fragment
-import com.hebin.utils.DialogUtil
-import com.hebin.project.mInterface.base.BaseView
+import com.hebin.project.anko.hideLoad
+import com.hebin.project.anko.showLoad
+import com.hebin.project.mInterface.BaseView
 
 /**
  * Author Hebin
@@ -15,13 +16,13 @@ import com.hebin.project.mInterface.base.BaseView
  * <p>
  * 说明：
  */
-class BaseFragment : Fragment() , BaseView {
+class BaseFragment : Fragment(), BaseView {
     override fun showLoading() {
-        DialogUtil.showDialog(context)
+        context.showLoad()
     }
 
     override fun hideLoading() {
-        DialogUtil.hideDialog()
+        hideLoad()
     }
 
     override fun showNullLayout() {

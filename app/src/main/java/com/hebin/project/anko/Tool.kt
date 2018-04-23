@@ -2,8 +2,6 @@
 
 package com.hebin.project.anko
 
-import android.os.CountDownTimer
-import com.hebin.project.tools.recyclerview.RecyclerViewTool
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
 
@@ -26,6 +24,4 @@ inline fun TwinklingRefreshLayout.setOnRefreshListener(noinline mRefresh: () -> 
 
     })
 }
-
-
 

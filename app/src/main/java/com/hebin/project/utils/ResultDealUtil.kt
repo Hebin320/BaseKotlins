@@ -4,8 +4,8 @@ package com.hebin.project.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.taorouw.utils.AppUtil
-import com.hebin.utils.ToastUtil
+import com.hebin.hxbr.showToast
+import com.taorouw.utils.checkLoad
 import org.json.JSONObject
 
 /**
@@ -20,13 +20,25 @@ import org.json.JSONObject
  * describe：
  */
 @SuppressLint("StaticFieldLeak")
-class ResultDealUtil(val context: Context, private val results: String) {
+class ResultDealUtil() {
 
 
+    private var context: Context? = null
+    private var results: String = ""
     private var successToast = false
     private var failedToast = false
     private var allToast = false
 
+
+    fun creat(context: Context): ResultDealUtil {
+        this.context = context
+        return this
+    }
+
+    fun setResult(result: String): ResultDealUtil {
+        this.results = result
+        return this
+    }
 
     fun successToast(): ResultDealUtil {
         successToast = true
@@ -44,19 +56,19 @@ class ResultDealUtil(val context: Context, private val results: String) {
     }
 
 
-    fun getSuccess(success: () -> Unit): ResultDealUtil {
+    fun getSuccess(success: (json: JSONObject) -> Unit): ResultDealUtil {
         if (results != null && results.isNotEmpty()) {
             val json = JSONObject(results)
             if (json.getBoolean("status") != null) {
                 if (json.getBoolean("status")) {
-                    success()
+                    success(json)
                     if (successToast) {
-                        ToastUtil.showToast(context, json.getString("info"))
+                        context?.showToast(json.getString("info"))
                         successToast = false
                     }
                 }
                 if (allToast) {
-                    ToastUtil.showToast(context, json.getString("info"))
+                    context?.showToast(json.getString("info"))
                     allToast = false
                 }
             }
@@ -70,14 +82,14 @@ class ResultDealUtil(val context: Context, private val results: String) {
             if (json.getBoolean("status") != null) {
                 if (!json.getBoolean("status")) {
                     failed(json)
-                    AppUtil.checkLoad(context, json.getString("info"))
+                    context?.checkLoad(json.getString("info"))
                     if (failedToast) {
-                        ToastUtil.showToast(context, json.getString("info"))
+                        context?.showToast(json.getString("info"))
                         failedToast = false
                     }
                 }
                 if (allToast) {
-                    ToastUtil.showToast(context, json.getString("info"))
+                    context?.showToast(json.getString("info"))
                     allToast = false
                 }
             }

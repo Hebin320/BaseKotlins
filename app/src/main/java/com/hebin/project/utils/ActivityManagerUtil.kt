@@ -5,20 +5,16 @@ import java.util.*
 
 /**
  * Author Hebin
- *
- *
- * created at 2017/5/5 10:27
- *
- *
+ * <p>
+ * created at 2018/4/16 15:02
+ * <p>
  * blog: http://blog.csdn.net/hebin320320
- *
- *
+ * <p>
  * GitHub: https://github.com/Hebin320
- *
- *
- * 说明：Activity管理器
+ * <p>
+ * describe：Activity管理器
  */
-open class ActivityManagerUtil  {
+open class ActivityManagerUtil {
 
     companion object {
 
@@ -31,7 +27,7 @@ open class ActivityManagerUtil  {
          */
         fun addActivity(activity: Activity) {
             if (activityList == null) {
-                activityList = ArrayList<Activity>()
+                activityList = ArrayList()
             }
             activityList!!.add(activity)
         }
@@ -126,12 +122,12 @@ open class ActivityManagerUtil  {
                 return
             }
             val size = activityList!!.size
-            for (i in 0..size - 1) {
-                if (true) {
+            if (size > 0) {
+                for (i in 0 until size) {
                     activityList!![i].finish()
                 }
+                activityList!!.clear()
             }
-            activityList!!.clear()
         }
 
         /**

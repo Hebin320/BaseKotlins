@@ -4,15 +4,11 @@ package com.hebin.project.ui.universal
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
-import android.view.View
-import android.widget.TextView
 import com.hebin.project.R
+import com.hebin.project.anko.selectImage
 import com.hebin.project.base.BaseActivity
-import com.hebin.project.ui.login.TestRecyclerviewActivity
 import com.hebin.utils.ImageUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import me.nereo.multi_image_selector.MultiImageSelectorActivity
@@ -27,12 +23,9 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         // 不开启侧滑关闭Activity
         swipeBackLayout.setEnableGesture(false)
-        tvPic.setOnClickListener { ImageUtil.selectImage(this, 9, 0x11) }
+        tvPic.setOnClickListener { selectImage(9, 0x11) }
         tvWebView.setOnClickListener { startActivity<WebviewActivity>() }
-        tvDomain.setOnClickListener {
-            startActivity<TestRecyclerviewActivity>()
-        }
-
+        tvDomain.setOnClickListener { startActivity<DomainActivity>() }
     }
 
 

@@ -1,4 +1,4 @@
-package com.hebin.mInterface
+package com.hebin.project.mInterface
 
 /**
  * Author Hebin
@@ -12,5 +12,7 @@ package com.hebin.mInterface
  * 说明：
  */
 interface DoSomeThing {
-    fun doSomeThing(type: Any, position: Any)
+    fun doSomeThing(type: Any, position: Any) {}
+    fun doSomeThing(type: Any, positionOne: Any, positionTwo: Any) {}
+    fun doSomeThing(type: Any, positionOne: Any, positionTwo: Any, positionThree: Any) {}
 }

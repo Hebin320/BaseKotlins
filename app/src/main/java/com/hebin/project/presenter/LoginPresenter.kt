@@ -1,12 +1,12 @@
 package com.hebin.project.presenter
 
 import android.content.Context
-import com.hebin.base.Baseurl
-import com.hebin.project.anko.*
+import com.hebin.project.base.look
+import com.hebin.project.base.time
 import com.hebin.project.base.okgo.BaseOkgoGet
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
-import com.zerom.management.mInterface.base.SuccessListener
-import com.zerom.management.mInterface.base.UniversalView
+import com.hebin.project.mInterface.SuccessListener
+import com.hebin.project.mInterface.UniversalView
+import com.hebin.project.utils.ResultDealUtil
 
 /**
  * Author Hebin
@@ -29,7 +29,7 @@ class LoginPresenter(val context: Context, val view: UniversalView) : SuccessLis
         BaseOkgoGet()
                 .showLoading(isShow)
                 .setType(SUCCESS_FOR_LOGIN)
-                .setUrl(Baseurl.look(context))
+                .setUrl(look(context))
                 .setView(view)
                 .setListener(this)
                 .request(context)
@@ -40,12 +40,25 @@ class LoginPresenter(val context: Context, val view: UniversalView) : SuccessLis
         BaseOkgoGet()
                 .showLoading(isShow)
                 .setType(SUCCESS_FOR_LOGIN)
-                .setUrl(Baseurl.time(context))
+                .setUrl(time(context))
                 .setView(view)
                 .setListener(this)
                 .request(context)
     }
 
     override fun onSuccess(context: Context, type: Any, results: String) {
+        when (type) {
+            SUCCESS_FOR_LOGIN -> {
+                ResultDealUtil()
+                        .creat(context)
+                        .setResult(results)
+                        .allToast()
+                        .getSuccess {
+
+                        }.getFailed {
+
+                        }
+            }
+        }
     }
 }

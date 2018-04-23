@@ -46,66 +46,6 @@ class ImageUtil {
                     .start(activity, REQUEST_CODE)
         }
 
-        /**
-         * 将图片加载到ImageView中，显示为圆角图片
-         * @param url       图片地址
-         * *
-         * @param roundSize 圆角大小
-         * *
-         * @param imageView 需要显示图片的控件
-         */
-        fun glideRoundImage(context: Context, url: Any, roundSize: Int, imageView: ImageView) {
-            if (Util.isOnMainThread()) {
-                Glide.with(context)
-                        .load(url)
-                        .asBitmap()
-                        .dontAnimate()
-                        .transform(GlideRoundTransform(context, roundSize))
-                        .error(R.drawable.ic_img_default)
-                        .placeholder(R.drawable.ic_img_default)
-                        .into(imageView)
-            }
-        }
-
-        /**
-         * 将图片加载到ImageView中，显示为圆形图片
-         * *
-         * @param url       图片的地址
-         * *
-         * @param imageView 需要显示图片的控件
-         */
-        fun glideCircleImage(context: Context, url: Any, imageView: ImageView) {
-            if (Util.isOnMainThread()) {
-                Glide.with(context)
-                        .load(url)
-                        .asBitmap()
-                        .dontAnimate()
-                        .transform(GlideCircleTransform(context))
-                        .error(R.drawable.ic_img_default)
-                        .placeholder(R.drawable.ic_img_default)
-                        .into(imageView)
-            }
-        }
-
-        /**
-         * 将图片加载到ImageView中，显示为普通的图片
-         * *
-         * @param url       图片的地址
-         * *
-         * @param imageView 需要显示图片的控件
-         */
-        fun glideNormalImage(context: Context, url: Any, imageView: ImageView) {
-            if (Util.isOnMainThread()) {
-                Glide.with(context)
-                        .load(url)
-                        .asBitmap()
-                        .dontAnimate()
-                        .error(R.drawable.ic_img_default)
-                        .placeholder(R.drawable.ic_img_default)
-                        .into(imageView)
-            }
-        }
-
     }
 
 }

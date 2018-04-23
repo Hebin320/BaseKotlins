@@ -5,8 +5,8 @@ import com.hebin.hxbr.printData
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.callback.StringCallback
 import com.lzy.okgo.request.BaseRequest
-import com.zerom.management.mInterface.base.SuccessListener
-import com.zerom.management.mInterface.base.UniversalView
+import com.hebin.project.mInterface.SuccessListener
+import com.hebin.project.mInterface.UniversalView
 import okhttp3.Call
 import okhttp3.Response
 

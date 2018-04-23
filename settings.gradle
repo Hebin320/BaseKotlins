@@ -1,1 +1,1 @@
-include ':app', ':multi-image-selector', ':rollviewpager', ':universallib', ':hxbr'
+include ':app', ':multi-image-selector', ':rollviewpager', ':universallib'

@@ -3,6 +3,8 @@ package com.hebin.project.ui.universal
 import android.os.Bundle
 import android.widget.Switch
 import com.hebin.hxbr.isCheck
+import com.hebin.hxbr.loadString
+import com.hebin.hxbr.saveFile
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
 import com.hebin.project.base.BaseFile
@@ -21,7 +23,7 @@ class DomainActivity : BaseActivity() {
 
     private fun init() {
         tvTitle.text = "设置域名"
-        when (BaseFile.loadString(context, BaseFile.DOMAIN)) {
+        when (loadString(BaseFile.DOMAIN)) {
             "", "domain" -> switchDomain.isChecked = true
             "test" -> switchTest.isChecked = true
             else -> {
@@ -29,7 +31,7 @@ class DomainActivity : BaseActivity() {
                 switchTest.isChecked = false
             }
         }
-        when (BaseFile.loadString(context, BaseFile.WEBDOMAIN)) {
+        when (loadString(BaseFile.WEBDOMAIN)) {
             "", "domain" -> switchWebDomain.isChecked = true
             "test" -> switchWebTest.isChecked = true
             else -> {
@@ -48,7 +50,7 @@ class DomainActivity : BaseActivity() {
         // 自定义域名
         tvSure.setOnClickListener {
             if (etDomain.text.isNotEmpty()) {
-                BaseFile.saveString(context, BaseFile.DOMAIN, etDomain.text.toString())
+                saveFile(BaseFile.DOMAIN, etDomain.text.toString())
                 switchDomain.isChecked = false
                 switchTest.isChecked = false
                 ToastUtil.showToast(context, "设置成功")
@@ -57,7 +59,7 @@ class DomainActivity : BaseActivity() {
         // 自定义web域名
         tvWebSure.setOnClickListener {
             if (etWebDomain.text.isNotEmpty()) {
-                BaseFile.saveString(context, BaseFile.WEBDOMAIN, etWebDomain.text.toString())
+                saveFile(BaseFile.WEBDOMAIN, etWebDomain.text.toString())
                 switchWebDomain.isChecked = false
                 switchWebTest.isChecked = false
                 ToastUtil.showToast(context, "设置成功")
@@ -71,7 +73,7 @@ class DomainActivity : BaseActivity() {
             array[i].isCheck {
                 for (k in array.indices) {
                     if (k == finalI) {
-                        BaseFile.saveString(context, type, string[i])
+                        saveFile(type, string[i])
                     } else {
                         array[k].isChecked = false
                     }

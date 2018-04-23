@@ -1,4 +1,4 @@
-package com.hebin.base
+package com.hebin.project.base
 
 import android.annotation.SuppressLint
 import android.app.Application
