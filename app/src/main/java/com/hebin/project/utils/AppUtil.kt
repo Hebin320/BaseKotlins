@@ -2,16 +2,12 @@
 
 package com.taorouw.utils
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.PackageManager
-import android.telephony.TelephonyManager
 import com.hebin.hxbr.loadString
-import com.hebin.project.ui.universal.MainActivity
+import com.hebin.project.ui.activity.universal.MainActivity
 import com.hebin.project.base.BaseFile
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.singleTop
-import java.util.*
 
 
 @Suppress("NOTHING_TO_INLINE")

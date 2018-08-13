@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hebin.project.ui.universal.MainActivity">
+    tools:context=".ui.activity.universal.MainActivity">
 
     <TextView
         android:id="@+id/tvPic"
@@ -37,6 +37,7 @@
         android:gravity="center"
         android:text="设置域名"
         android:textColor="@color/white" />
+
 
 
 </LinearLayout>

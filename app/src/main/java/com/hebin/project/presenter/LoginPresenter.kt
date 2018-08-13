@@ -33,7 +33,6 @@ class LoginPresenter(val context: Context, val view: UniversalView) : SuccessLis
                 .setView(view)
                 .setListener(this)
                 .request(context)
-
     }
 
     fun time(isShow: Boolean) {
@@ -54,9 +53,9 @@ class LoginPresenter(val context: Context, val view: UniversalView) : SuccessLis
                         .setResult(results)
                         .allToast()
                         .getSuccess {
-
+                            view.getSuccess(type, "获取成功")
                         }.getFailed {
-
+                            view.getFailed(type, "获取失败")
                         }
             }
         }

@@ -3,7 +3,9 @@
 package com.hebin.project.base
 
 import android.content.Context
-import android.util.Log
+import com.hebin.hxbr.loadString
+import com.hebin.hxbr.printData
+import com.hebin.hxbr.printLog
 
 /**
  * Author Hebin
@@ -18,44 +20,38 @@ import android.util.Log
  */
 
 fun getDoMain(context: Context): String {
-    val doMain = when (BaseFile.loadString(context, BaseFile.DOMAIN)) {
+    val doMain = when (context.loadString(BaseFile.DOMAIN)) {
         "" -> "http://www.baidu.com"
     // 正式服务器
         "domain" -> "http://www.baidu.com"
     // 测试服务器
         "test" -> "http://www.baidu.com"
     // 自定义服务器
-        else -> BaseFile.loadString(context, BaseFile.DOMAIN)
+        else -> context.loadString(BaseFile.DOMAIN)
     }
     return doMain
 }
 
 fun getWebDomain(context: Context): String {
-    val doMain = when (BaseFile.loadString(context, BaseFile.WEBDOMAIN)) {
+    val doMain = when (context.loadString(BaseFile.WEBDOMAIN)) {
         "" -> "http://www.baidu.com"
     // 正式服务器
         "domain" -> "www.baidu.com"
     // 测试服务器
         "test" -> "http://www.baidu.com"
     // 自定义服务器
-        else -> BaseFile.loadString(context, BaseFile.WEBDOMAIN)
+        else -> context.loadString(BaseFile.WEBDOMAIN)
     }
     return doMain
 }
 
-/**
- * 打印数据
- */
-fun printData(string: String) {
-    Log.e("Hebin", string)
-}
 
 /**
  * 随便看看
  */
 inline fun look(context: Context): String {
     val string = "${getDoMain(context)}/diagnosis/v2/overt/look"
-    printData(string)
+    printLog(string)
     return string
 }
 
@@ -64,7 +60,16 @@ inline fun look(context: Context): String {
  */
 inline fun time(context: Context): String {
     val string = "${getDoMain(context)}/diagnosis/v2/overt/time"
-    printData(string)
+    printLog(string)
+    return string
+}
+
+/**
+ * 斗鱼数据
+ */
+inline fun douyu(page: Int): String {
+    val string = "http://capi.douyucdn.cn/api/v1/getVerticalRoom?limit=60&offset=$page"
+    printLog(string)
     return string
 }
 

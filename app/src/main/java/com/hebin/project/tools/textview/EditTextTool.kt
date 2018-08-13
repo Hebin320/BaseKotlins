@@ -12,16 +12,20 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
+import com.hebin.hxbr.setGone
+import com.hebin.hxbr.setVisible
 import com.hebin.project.mInterface.DoSomeThing
 
-
 /**
- * Created by Hebin
+ * Author Hebin
+ * <p>
+ * created at 2018/5/2 10:17
+ * <p>
  * blog: http://blog.csdn.net/hebin320320
+ * <p>
  * GitHub: https://github.com/Hebin320
- *
- *
- * EditText的一些方法的封装
+ * <p>
+ * describe：EditText的一些方法的封装
  */
 @SuppressLint("WrongConstant")
 class EditTextTool {
@@ -100,9 +104,9 @@ class EditTextTool {
 
                 override fun afterTextChanged(editable: Editable) {
                     if (editable.isNotEmpty()) {
-                        viewDelete[position].visibility = View.VISIBLE
+                        viewDelete[position].setVisible()
                     } else {
-                        viewDelete[position].visibility = View.GONE
+                        viewDelete[position].setGone()
                     }
                 }
             })
@@ -146,21 +150,6 @@ class EditTextTool {
                 })
             }
         }
-        return editTextTool!!
-    }
-
-    fun etChangeDoSomeThing(editTexts: EditText, doSomeThing: DoSomeThing): EditTextTool {
-        editTexts.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-            }
-
-            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-            }
-
-            override fun afterTextChanged(editable: Editable) {
-                doSomeThing.doSomeThing(ET_CHANGE_DOSOMETHING_TAG, editable.toString())
-            }
-        })
         return editTextTool!!
     }
 
@@ -252,10 +241,6 @@ class EditTextTool {
             return editTextTool!!
         }
 
-        /**
-         * 监听文本框内容，自定义操作
-         */
-        const val ET_CHANGE_DOSOMETHING_TAG = "ET_CHANGE_DOSOMETHING_TAG"
     }
 
 

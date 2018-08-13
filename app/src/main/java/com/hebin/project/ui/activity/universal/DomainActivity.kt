@@ -1,4 +1,4 @@
-package com.hebin.project.ui.universal
+package com.hebin.project.ui.activity.universal
 
 import android.os.Bundle
 import android.widget.Switch

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.universal.DomainActivity">
+    tools:context=".ui.activity.universal.DomainActivity">
 
     <include layout="@layout/public_simple_title" />
 

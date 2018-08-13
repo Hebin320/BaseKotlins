@@ -17,12 +17,16 @@ package com.hebin.project.entity
 /**
  *  传参用的实体类
  * */
-data class DataEntity(var name: String, var age: Int, var tel: String, var pwd: String) {
-    constructor() : this("", 0, "", "")
+data class DataEntity(var page: Int, var name: String, var age: Int, var tel: String, var pwd: String) {
+    constructor() : this(1, "", 0, "", "")
 }
 
 data class TestEntity(var list: MutableList<ListEntity>) {
     data class ListEntity(var title: String) {
         constructor() : this("")
     }
+}
+
+data class DouyuEntity(val data: MutableList<MdataEntity>) {
+    data class MdataEntity(val vertical_src: String)
 }

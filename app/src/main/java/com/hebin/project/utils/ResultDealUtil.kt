@@ -66,6 +66,8 @@ class ResultDealUtil() {
                         context?.showToast(json.getString("info"))
                         successToast = false
                     }
+                } else {
+                    context?.checkLoad(json.getString("info"))
                 }
                 if (allToast) {
                     context?.showToast(json.getString("info"))

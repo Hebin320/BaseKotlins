@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATED_IDENTITY_EQUALS")
 
-package com.hebin.project.ui.universal
+package com.hebin.project.ui.activity.universal
 
 import android.app.Activity
 import android.content.Intent
@@ -9,7 +9,6 @@ import android.util.Log
 import com.hebin.project.R
 import com.hebin.project.anko.selectImage
 import com.hebin.project.base.BaseActivity
-import com.hebin.utils.ImageUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import me.nereo.multi_image_selector.MultiImageSelectorActivity
 import org.jetbrains.anko.startActivity
@@ -21,11 +20,8 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // 不开启侧滑关闭Activity
-        swipeBackLayout.setEnableGesture(false)
         tvPic.setOnClickListener { selectImage(9, 0x11) }
         tvWebView.setOnClickListener { startActivity<WebviewActivity>() }
-        tvDomain.setOnClickListener { startActivity<DomainActivity>() }
     }
 
 
@@ -42,6 +38,9 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        moveTaskToBack(false)
+    }
 
 }
 

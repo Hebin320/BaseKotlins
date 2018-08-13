@@ -6,11 +6,13 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.support.multidex.MultiDex
+import android.util.Log
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheMode
 import com.lzy.okgo.cookie.store.PersistentCookieStore
 import com.lzy.okgo.model.HttpHeaders
 import com.lzy.okgo.model.HttpParams
+import com.tencent.smtt.sdk.QbSdk
 
 
 @SuppressLint("Registered")
@@ -42,6 +44,27 @@ open class MyApplication : Application() {
         resources
         // 设置网络请求的基本属性
         setOkGo()
+        // 初始化腾讯X5浏览器
+        initTBS()
+    }
+
+    /**
+     * 初始化TBS浏览服务X5内核
+     */
+    private fun initTBS() {
+        //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+        QbSdk.setDownloadWithoutWifi(true)//非wifi条件下允许下载X5内核
+        val cb = object : QbSdk.PreInitCallback {
+
+            override fun onViewInitFinished(arg0: Boolean) {
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                Log.d("app", " onViewInitFinished is $arg0")
+            }
+
+            override fun onCoreInitFinished() {}
+        }
+        //x5内核初始化接口
+        QbSdk.initX5Environment(applicationContext, cb)
     }
 
     override fun attachBaseContext(base: Context) {
