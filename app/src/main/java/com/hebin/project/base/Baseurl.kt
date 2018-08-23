@@ -6,6 +6,7 @@ import android.content.Context
 import com.hebin.hxbr.loadString
 import com.hebin.hxbr.printData
 import com.hebin.hxbr.printLog
+import com.hebin.hxbr.util.BaseFile.Companion.loadString
 
 /**
  * Author Hebin
@@ -20,27 +21,28 @@ import com.hebin.hxbr.printLog
  */
 
 fun getDoMain(context: Context): String {
-    val doMain = when (context.loadString(BaseFile.DOMAIN)) {
-        "" -> "http://www.baidu.com"
-    // 正式服务器
-        "domain" -> "http://www.baidu.com"
-    // 测试服务器
-        "test" -> "http://www.baidu.com"
-    // 自定义服务器
-        else -> context.loadString(BaseFile.DOMAIN)
+    val doMain = if (loadString(context, BaseFile.DOMAIN) == "") {
+        "https://www.baidu.com"
+    } else {
+        loadString(context, BaseFile.DOMAIN)
     }
     return doMain
 }
 
 fun getWebDomain(context: Context): String {
-    val doMain = when (context.loadString(BaseFile.WEBDOMAIN)) {
-        "" -> "http://www.baidu.com"
-    // 正式服务器
-        "domain" -> "www.baidu.com"
-    // 测试服务器
-        "test" -> "http://www.baidu.com"
-    // 自定义服务器
-        else -> context.loadString(BaseFile.WEBDOMAIN)
+    val doMain = if (loadString(context, BaseFile.WEBDOMAIN) == "") {
+        "https://www.baidu.com"
+    } else {
+        loadString(context, BaseFile.WEBDOMAIN)
+    }
+    return doMain
+}
+
+fun getFileDomain(context: Context): String {
+    val doMain = if (loadString(context, BaseFile.FILEDOMAIN) == "") {
+        "https://www.baidu.com"
+    } else {
+        loadString(context, BaseFile.FILEDOMAIN)
     }
     return doMain
 }

@@ -325,7 +325,7 @@ public class MultiImageSelectorFragment extends Fragment {
                 if (mTmpFile != null && mTmpFile.exists()) {//调起系统拍照
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {//安卓7.0及以上
                         // 将文件转换成content://Uri的形式
-                        Uri photoURI = FileProvider.getUriForFile(getActivity(), getActivity().getPackageName() + ".provider", mTmpFile);
+                        Uri photoURI = FileProvider.getUriForFile(getActivity(), getActivity().getPackageName() + ".fileProvider", mTmpFile);
                         // 申请临时访问权限
                         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);

@@ -35,7 +35,6 @@ dependencies {
     compile 'junit:junit:4.12'
     compile project(':universallib')
     compile project(':rollviewpager')
-    implementation project(':hxbrecyclerview')
     compile project(':multi-image-selector')
     compile 'com.lzy.net:okgo:2.1.4'
     compile 'com.google.code.gson:gson:2.8.0'
@@ -45,5 +44,6 @@ dependencies {
     compile "com.android.support:design:$google_version"
     compile 'com.android.support.constraint:constraint-layout:1.1.2'
     compile 'com.hebin:hxbr:1.0.7'
+    implementation 'com.hebin:hxbrecyclerview:1.0.4'
     implementation files('libs/tbs_sdk_thirdapp_v3.2.0.1104_43200_sharewithdownload_withfilereader_withoutGame_obfs_20170609_115346.jar')
 }

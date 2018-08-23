@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BaseKotlins.iml" filepath="$PROJECT_DIR$/BaseKotlins.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hxbrecyclerview/hxbrecyclerview.iml" filepath="$PROJECT_DIR$/hxbrecyclerview/hxbrecyclerview.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" filepath="$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" />
       <module fileurl="file://$PROJECT_DIR$/rollviewpager/rollviewpager.iml" filepath="$PROJECT_DIR$/rollviewpager/rollviewpager.iml" />
       <module fileurl="file://$PROJECT_DIR$/universallib/universallib.iml" filepath="$PROJECT_DIR$/universallib/universallib.iml" />

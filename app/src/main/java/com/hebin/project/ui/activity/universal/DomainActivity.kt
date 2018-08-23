@@ -1,10 +1,9 @@
 package com.hebin.project.ui.activity.universal
 
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Switch
-import com.hebin.hxbr.isCheck
-import com.hebin.hxbr.loadString
-import com.hebin.hxbr.saveFile
+import com.hebin.hxbr.*
 import com.hebin.project.R
 import com.hebin.project.base.BaseActivity
 import com.hebin.project.base.BaseFile
@@ -23,61 +22,85 @@ class DomainActivity : BaseActivity() {
 
     private fun init() {
         tvTitle.text = "设置域名"
-        when (loadString(BaseFile.DOMAIN)) {
-            "", "domain" -> switchDomain.isChecked = true
-            "test" -> switchTest.isChecked = true
-            else -> {
-                switchDomain.isChecked = false
-                switchTest.isChecked = false
-            }
+        when (loadString(BaseFile.DOMAINTAG)) {
+            "", "1" -> switchDomain.isChecked = true
+            "2" -> switchTest.isChecked = true
+            "3" -> switchLocal.isChecked = true
+            "4" -> switchDev.isChecked = true
         }
-        when (loadString(BaseFile.WEBDOMAIN)) {
-            "", "domain" -> switchWebDomain.isChecked = true
-            "test" -> switchWebTest.isChecked = true
-            else -> {
-                switchWebDomain.isChecked = false
-                switchWebTest.isChecked = false
-            }
+        when (loadString(BaseFile.WEBDOMAINTAG)) {
+            "", "1" -> switchWebDomain.isChecked = true
+            "2" -> switchWebTest.isChecked = true
+            "3" -> switchWebLocal.isChecked = true
+            "4" -> switchWebDev.isChecked = true
+        }
+        when (loadString(BaseFile.FILEDOMAINTAG)) {
+            "", "1" -> switchFileDomain.isChecked = true
+            "2" -> switchFileTest.isChecked = true
+            "3" -> switchFileLocal.isChecked = true
+            "4" -> switchFileDev.isChecked = true
         }
         onClick()
-        setSwitch(arrayOf(switchDomain, switchTest), BaseFile.DOMAIN, arrayOf("domain", "test"))
-        setSwitch(arrayOf(switchWebDomain, switchWebTest), BaseFile.WEBDOMAIN, arrayOf("domain", "test"))
+        setText(arrayOf(etDomain, etTest, etLocal, etDev), arrayOf(switchDomain, switchTest, switchLocal, switchDev), BaseFile.DOMAIN,
+                arrayOf(BaseFile.DOMAINTEXT, BaseFile.DOMAINTESTTEXT, BaseFile.DOMAINLOCALTEXT, BaseFile.DOMAINDEVTEXT))
+        setText(arrayOf(etWebDomain, etWebTest, etWebLocal, etWebDev), arrayOf(switchWebDomain, switchWebTest, switchWebLocal, switchWebDev), BaseFile.WEBDOMAIN,
+                arrayOf(BaseFile.WEBDOMAINTEXT, BaseFile.WEBDOMAINTESTTEXT, BaseFile.WEBDOMAINLOCALTEXT, BaseFile.WEBDOMAINDEVTEXT))
+        setText(arrayOf(etFileDomain, etFileTest, etFileLocal, etFileDev), arrayOf(switchFileDomain, switchFileTest, switchFileLocal, switchFileDev), BaseFile.FILEDOMAIN,
+                arrayOf(BaseFile.FILEDOMAINTEXT, BaseFile.FILEDOMAINTESTTEXT, BaseFile.FILEDOMAINLOCALTEXT, BaseFile.FILEDOMAINDEVTEXT))
+        firstText(arrayOf(etDomain, etTest, etLocal, etDev), arrayOf(BaseFile.DOMAINTEXT, BaseFile.DOMAINTESTTEXT, BaseFile.DOMAINLOCALTEXT, BaseFile.DOMAINDEVTEXT),
+                arrayOf("https://api.safetypla.com", "http://api.safetypla.cc", "http://api.safetypla.d", "http://api.safetypla.z"))
+        firstText(arrayOf(etWebDomain, etWebTest, etWebLocal, etWebDev), arrayOf(BaseFile.WEBDOMAINTEXT, BaseFile.WEBDOMAINTESTTEXT, BaseFile.WEBDOMAINLOCALTEXT, BaseFile.WEBDOMAINDEVTEXT),
+                arrayOf("https://m.safetypla.com", "http://m.safetypla.cc", "http://m.safetypla.d", "http://m.safetypla.z"))
+        firstText(arrayOf(etFileDomain, etFileTest, etFileLocal, etFileDev), arrayOf(BaseFile.FILEDOMAINTEXT, BaseFile.FILEDOMAINTESTTEXT, BaseFile.FILEDOMAINLOCALTEXT, BaseFile.FILEDOMAINDEVTEXT),
+                arrayOf("https://file.safetypla.com", "http://file.safetypla.cc", "http://file.safetypla.d", "http://flie.safetypla.z"))
+        setSwitch(arrayOf(switchDomain, switchTest, switchLocal, switchDev), BaseFile.DOMAIN, BaseFile.DOMAINTAG,
+                arrayOf(etDomain.getString(), etTest.getString(), etLocal.getString(), etDev.getString()),
+                arrayOf("1", "2", "3", "4"))
+        setSwitch(arrayOf(switchWebDomain, switchWebTest, switchWebLocal, switchWebDev), BaseFile.WEBDOMAIN, BaseFile.WEBDOMAINTAG,
+                arrayOf(etWebDomain.getString(), etWebTest.getString(), etWebLocal.getString(), etWebDev.getString()),
+                arrayOf("1", "2", "3", "4"))
+        setSwitch(arrayOf(switchFileDomain, switchFileTest, switchFileLocal, switchFileDev), BaseFile.FILEDOMAIN, BaseFile.FILEDOMAINTAG,
+                arrayOf(etFileDomain.getString(), etFileTest.getString(), etFileLocal.getString(), etFileDev.getString()),
+                arrayOf("1", "2", "3", "4"))
     }
 
-    private fun onClick() {
+    fun onClick() {
         // 返回
         ivBack.setOnClickListener { finish() }
-        // 自定义域名
-        tvSure.setOnClickListener {
-            if (etDomain.text.isNotEmpty()) {
-                saveFile(BaseFile.DOMAIN, etDomain.text.toString())
-                switchDomain.isChecked = false
-                switchTest.isChecked = false
-                ToastUtil.showToast(context, "设置成功")
-            }
-        }
-        // 自定义web域名
-        tvWebSure.setOnClickListener {
-            if (etWebDomain.text.isNotEmpty()) {
-                saveFile(BaseFile.WEBDOMAIN, etWebDomain.text.toString())
-                switchWebDomain.isChecked = false
-                switchWebTest.isChecked = false
-                ToastUtil.showToast(context, "设置成功")
-            }
-        }
     }
 
-    private fun setSwitch(array: Array<Switch>, type: String, string: Array<String>) {
+    private fun setSwitch(array: Array<Switch>, type: String, typeTAG: String, string: Array<String>, tag: Array<String>) {
         for (i in array.indices) {
             val finalI = i
             array[i].isCheck {
+                saveFile(type, string[i])
+                saveFile(typeTAG, tag[i])
                 for (k in array.indices) {
-                    if (k == finalI) {
-                        saveFile(type, string[i])
-                    } else {
+                    if (k != finalI) {
                         array[k].isChecked = false
                     }
                 }
+            }
+        }
+    }
+
+    private fun setText(array: Array<EditText>, switch: Array<Switch>, tag: String, type: Array<String>) {
+        for (i in array.indices) {
+            array[i].addTextChangedListener {
+                saveFile(type[i], array[i].getString())
+                if (switch[i].isChecked) {
+                    saveFile(tag, array[i].getString())
+                }
+            }
+        }
+    }
+
+    private fun firstText(array: Array<EditText>, type: Array<String>, url: Array<String>) {
+        for (i in array.indices) {
+            if (loadString(type[i]).isEmpty()) {
+                array[i].texts = url[i]
+            } else {
+                array[i].texts = loadString(type[i])
             }
         }
     }
