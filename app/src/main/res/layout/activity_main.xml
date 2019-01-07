@@ -1,43 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/llMainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.activity.universal.MainActivity">
-
-    <TextView
-        android:id="@+id/tvPic"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginTop="@dimen/dp_30"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="选择图片"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/tvWebView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginTop="@dimen/dp_10"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="浏览器"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/tvDomain"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginTop="@dimen/dp_10"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="设置域名"
-        android:textColor="@color/white" />
+    tools:context=".ui.activity.MainActivity">
 
 
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,22 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.30'
-    ext.anko_version = '0.10.1'
+    ext.kotlin_version = '1.2.61'
     ext.google_version = '26.1.0'
+    ext.anko_version = '0.10.1'
     repositories {
         google()
         jcenter()
         mavenCentral()
+        jcenter { url "http://jcenter.bintray.com/" }
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.google.com' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.novoda:bintray-release:0.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2'
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -24,19 +24,13 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        jcenter { url "http://jcenter.bintray.com/" }
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.google.com' }
-        mavenCentral()
-    }
-
-    tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
-        options.addStringOption('encoding', 'UTF-8')
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-

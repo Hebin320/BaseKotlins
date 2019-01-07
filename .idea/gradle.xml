@@ -9,10 +9,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/hxbindicator" />
             <option value="$PROJECT_DIR$/hxbrecyclerview" />
-            <option value="$PROJECT_DIR$/multi-image-selector" />
+            <option value="$PROJECT_DIR$/imagepicker" />
             <option value="$PROJECT_DIR$/rollviewpager" />
-            <option value="$PROJECT_DIR$/universallib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
