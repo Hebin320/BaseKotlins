@@ -5,11 +5,15 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.support.multidex.MultiDex
+import android.support.multidex.MultiDexApplication
+import android.util.Log
 import com.huburt.library.ImagePicker
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheMode
 import com.lzy.okgo.cookie.store.MemoryCookieStore
 import com.lzy.okgo.model.HttpParams
+import com.tencent.smtt.sdk.QbSdk
 import com.zerom.easyquery.util.image.GlideImageLoader
 
 
@@ -28,7 +32,7 @@ import com.zerom.easyquery.util.image.GlideImageLoader
  */
 
 
-open class MyApplication : Application() {
+open class MyApplication : MultiDexApplication() {
 
     companion object {
         @SuppressLint("StaticFieldLeak")
@@ -40,7 +44,13 @@ open class MyApplication : Application() {
         mContext = this.applicationContext
         setOkgo()
         setImagePicker()
+        setWebView()
+    }
 
+    // 分包打包，解决65535问题
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 
 
@@ -91,6 +101,21 @@ open class MyApplication : Application() {
         }
     }
 
+
+    private fun setWebView() {
+        val cb = object : QbSdk.PreInitCallback {
+
+            override fun onViewInitFinished(arg0: Boolean) {
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                Log.d("app", " onViewInitFinished is $arg0")
+            }
+
+            override fun onCoreInitFinished() {
+            }
+        }
+        //x5内核初始化接口
+        QbSdk.initX5Environment(applicationContext, cb)
+    }
 
     override fun getResources(): Resources {
         val res = super.getResources()

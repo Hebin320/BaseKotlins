@@ -13,7 +13,7 @@ inline fun Context.saveString(infoKey: String, info: String) = HxbBaseFile.saveS
 inline fun Context.loadString(infoKey: String) = HxbBaseFile.loadString(this, infoKey)
 
 // 保存布尔值
-inline fun Context.saveBoolean(infoKey: String, isTrue: Boolean) = HxbBaseFile.saveBoolean(this, infoKey, false)
+inline fun Context.saveBoolean(infoKey: String, isTrue: Boolean) = HxbBaseFile.saveBoolean(this, infoKey, isTrue)
 
 // 提取布尔值
 inline fun Context.loadBoolean(infoKey: String) = HxbBaseFile.loadBoolean(this, infoKey)
