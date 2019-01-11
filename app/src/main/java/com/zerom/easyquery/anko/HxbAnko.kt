@@ -3,6 +3,9 @@
 package com.zerom.easyquery.anko
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
+import android.widget.TextView
 
 
 inline fun Activity.getStringExtra(tag: String) = HxbAnko.getStringExtra(this, tag)
@@ -10,6 +13,13 @@ inline fun Activity.getStringExtra(tag: String) = HxbAnko.getStringExtra(this, t
 inline fun Activity.getStringArrayExtra(tag: String) = HxbAnko.getStringArrayExtra(this, tag)
 
 inline fun Activity.getStringArrayListExtra(tag: String) = HxbAnko.getStringArrayListExtra(this, tag)
+
+inline fun Activity.callPhone(phoneNum: String) {
+    val intent = Intent(Intent.ACTION_DIAL)
+    val data = Uri.parse("tel:$phoneNum")
+    intent.data = data
+    this.startActivity(intent)
+}
 
 
 class HxbAnko {
@@ -40,5 +50,6 @@ class HxbAnko {
                 activity.intent.getStringArrayListExtra(tag)
             }
         }
+
     }
 }

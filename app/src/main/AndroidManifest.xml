@@ -22,6 +22,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <!-- ************************************************************全面屏适配************************************************************ -->
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <!-- ************************************************************全面屏适配************************************************************ -->
+
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,11 +39,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".base.BaseActivity" />
-        <activity android:name=".ui.activity.universal.HxbWebviewActivity" />
+        <activity
+            android:name=".ui.activity.universal.HxbWebviewActivity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="true" />
         <activity
             android:name=".ui.activity.universal.WebviewActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true" />
+        <activity android:name=".ui.activity.universal.DoMainActivity"></activity>
     </application>
 
 </manifest>
